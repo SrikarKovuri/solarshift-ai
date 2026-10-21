@@ -1,0 +1,15 @@
+# Paths are relative to the repository root (parent of configs/).
+[data]
+raw_dir = "data/raw"
+output_dir = "data/processed"
+results_dir = "results/generated"
+files = ["Solar home 2010-2011.csv", "Solar home 2011-2012.csv", "Solar home 2012-2013.csv"]
+source_url = "https://pierreh.eu/downloads/Ausgrid_solar_home_data.zip"
+timezone = "Australia/Sydney"
+exclude_dst_transition_days = true
+primary_demand_channel = "GC"
+
+[explore]
+customer = 1
+start = "2012-07-01"
+days = 7

@@ -1,0 +1,118 @@
+{
+  "generated_at_utc": "2026-10-21T11:27:20.527491+00:00",
+  "python": "3.12.14",
+  "versions": {
+    "pandas": "2.2.3",
+    "numpy": "2.2.6",
+    "pyarrow": "19.0.1"
+  },
+  "config_sha256": "71be83afb541426ca11af962d6697f8f3527fbfebcf73aaddf87e03d56e68e56",
+  "source_url": "https://pierreh.eu/downloads/Ausgrid_solar_home_data.zip",
+  "demand_definition": "GC only; controlled load CL remains separate; GG is gross generation.",
+  "timestamp_policy": "Australia/Sydney interval endings; DST transition channel-days excluded.",
+  "target_imputation": "none",
+  "files": [
+    {
+      "filename": "Solar home 2010-2011.csv",
+      "sha256": "2fc1f615e22fbd8ec350cdb19f7465d3a038453fc2ffd19473ef1bd38fd28289",
+      "bytes": 63621419,
+      "period_start": "2010-07-01",
+      "period_end": "2011-06-30",
+      "households": 300,
+      "channels": [
+        "CL",
+        "GC",
+        "GG"
+      ],
+      "input_channel_days": 269735,
+      "accepted_channel_days": 268257,
+      "excluded_channel_days": 1478,
+      "exclusion_reasons": {
+        "dst_transition_day": 1478
+      },
+      "warning_pv_days_above_125_percent_nameplate": 174,
+      "warning_policy": "Nameplate exceedance is flagged, not automatically excluded.",
+      "accepted_intervals": 12876336
+    },
+    {
+      "filename": "Solar home 2011-2012.csv",
+      "sha256": "a7d6abd1369311a5566e00d249141fd8aec28e9faba0bc928788607d961fc8c8",
+      "bytes": 64222510,
+      "period_start": "2011-07-01",
+      "period_end": "2012-06-30",
+      "households": 300,
+      "channels": [
+        "CL",
+        "GC",
+        "GG"
+      ],
+      "input_channel_days": 270304,
+      "accepted_channel_days": 268727,
+      "excluded_channel_days": 1577,
+      "exclusion_reasons": {
+        "dst_transition_day": 1477,
+        "non_actual_or_unknown_quality": 100
+      },
+      "warning_pv_days_above_125_percent_nameplate": 226,
+      "warning_policy": "Nameplate exceedance is flagged, not automatically excluded.",
+      "accepted_intervals": 12898896
+    },
+    {
+      "filename": "Solar home 2012-2013.csv",
+      "sha256": "e4be46b3c9991c65735a9545319a2f1c33be8e639c75a17a88e0323a8e5098be",
+      "bytes": 63782724,
+      "period_start": "2012-07-01",
+      "period_end": "2013-06-30",
+      "households": 300,
+      "channels": [
+        "CL",
+        "GC",
+        "GG"
+      ],
+      "input_channel_days": 268557,
+      "accepted_channel_days": 266651,
+      "excluded_channel_days": 1906,
+      "exclusion_reasons": {
+        "dst_transition_day": 1476,
+        "non_actual_or_unknown_quality": 431
+      },
+      "warning_pv_days_above_125_percent_nameplate": 274,
+      "warning_policy": "Nameplate exceedance is flagged, not automatically excluded.",
+      "accepted_intervals": 12799248
+    }
+  ],
+  "accepted_intervals": 38574480,
+  "excluded_channel_days": 4961,
+  "unavailable_primary_channel_days": 4268,
+  "households": 300,
+  "outputs": {
+    "daily_summary.parquet": {
+      "bytes": 5148797,
+      "sha256": "e4f17907afc43802dde6a523d93caa23f3e15ed389e1c6d9e274beea61a40b3f"
+    },
+    "excluded_channel_days.csv": {
+      "bytes": 338261,
+      "sha256": "4be1f89eefdba557492eef88deb2a5311d1715046f94de66d00b60ddea6cfdc7"
+    },
+    "households.csv": {
+      "bytes": 3957,
+      "sha256": "a9a7f1d085e3fba1278fbc142f91c969f4218d9faafb9938b5ef6176bb8fe1ff"
+    },
+    "intervals_2010_2011.parquet": {
+      "bytes": 97308114,
+      "sha256": "47f52cdd145d69b05953b7d318ff332e6a607d43b3014b8932dd4424c6fa922a"
+    },
+    "intervals_2011_2012.parquet": {
+      "bytes": 86915180,
+      "sha256": "24677f8a52c4cd8ca01990643fb980f46012320b2c98975a290492961886a4aa"
+    },
+    "intervals_2012_2013.parquet": {
+      "bytes": 95589940,
+      "sha256": "76b891a1b487542e5ccaa01ba8182a6b298077ac4b916d4873d3456e23ba75bf"
+    },
+    "unavailable_primary_channel_days.csv": {
+      "bytes": 181752,
+      "sha256": "0130558b4a064f6ab7462d846a9cfca3464022cb9618c67f93fedd83e6ede9fe"
+    }
+  }
+}

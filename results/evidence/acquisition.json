@@ -1,0 +1,37 @@
+{
+  "checked_at_utc": "2026-10-21T11:27:04.717435+00:00",
+  "source_url": "https://pierreh.eu/downloads/Ausgrid_solar_home_data.zip",
+  "acquisition": "local_archive",
+  "archive_sha256": "5a766f52b6c8b3b72730380f4422e478934bc94640a4b089dd0e0e3c055c5d82",
+  "archive_bytes": 57038633,
+  "archive_crc_check": "passed",
+  "files": [
+    {
+      "filename": "Solar home 2010-2011.csv",
+      "bytes": 63621419,
+      "sha256": "2fc1f615e22fbd8ec350cdb19f7465d3a038453fc2ffd19473ef1bd38fd28289"
+    },
+    {
+      "filename": "Solar home 2011-2012.csv",
+      "bytes": 64222510,
+      "sha256": "a7d6abd1369311a5566e00d249141fd8aec28e9faba0bc928788607d961fc8c8"
+    },
+    {
+      "filename": "Solar home 2012-2013.csv",
+      "bytes": 63782724,
+      "sha256": "e4be46b3c9991c65735a9545319a2f1c33be8e639c75a17a88e0323a8e5098be"
+    },
+    {
+      "filename": "Ausgrid solar home electricity data notes (Aug 2014).pdf",
+      "bytes": 40839,
+      "sha256": "05efccf64d45356d368a6b5c7d8f4e0990bd07ddf92afa3cf303cfbf3f39b156"
+    },
+    {
+      "filename": "README.md",
+      "bytes": 2151,
+      "sha256": "08e8b846b66a26f559c8f6b80c8758c637c5b4319da41fdc2478e7a91914c89d"
+    }
+  ],
+  "provenance_limit": "CRC/SHA verify consistency, not independent Ausgrid authenticity.",
+  "licence_status": "Mirror states CC BY 3.0 Australia; original grant not independently recovered."
+}

@@ -1,0 +1,13 @@
+iniconfig==2.3.1
+narwhals==2.27.1
+numpy==2.2.6
+packaging==26.3
+pandas==2.2.3
+plotly==6.0.1
+pluggy==1.7.0
+pyarrow==19.0.1
+pytest==8.3.5
+python-dateutil==2.9.0.post0
+pytz==2026.5
+six==1.17.0
+tzdata==2026.5

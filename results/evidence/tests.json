@@ -1,0 +1,127 @@
+{
+  "tests": "29",
+  "failures": "0",
+  "errors": "0",
+  "skipped": "0",
+  "time": "1.456",
+  "timestamp": "2026-10-22T01:35:52.010501+11:00",
+  "command": "PYTHONPATH=src python -m pytest -q --junitxml=results/evidence/tests.xml",
+  "cases": [
+    {
+      "suite": "tests.test_acquisition",
+      "test": "test_only_expected_data_extracted_and_manifest_hashed"
+    },
+    {
+      "suite": "tests.test_acquisition",
+      "test": "test_incomplete_archive_cannot_be_salvaged_silently"
+    },
+    {
+      "suite": "tests.test_acquisition",
+      "test": "test_missing_expected_member_fails_before_extraction"
+    },
+    {
+      "suite": "tests.test_data_parsing",
+      "test": "test_real_date_and_header_variants[True-1-Jul-10]"
+    },
+    {
+      "suite": "tests.test_data_parsing",
+      "test": "test_real_date_and_header_variants[True-1/07/2010]"
+    },
+    {
+      "suite": "tests.test_data_parsing",
+      "test": "test_real_date_and_header_variants[False-1-Jul-10]"
+    },
+    {
+      "suite": "tests.test_data_parsing",
+      "test": "test_real_date_and_header_variants[False-1/07/2010]"
+    },
+    {
+      "suite": "tests.test_data_parsing",
+      "test": "test_quality_na_not_lost_to_csv_missing_value_parser"
+    },
+    {
+      "suite": "tests.test_data_parsing",
+      "test": "test_rejects_wrong_interval_order"
+    },
+    {
+      "suite": "tests.test_data_parsing",
+      "test": "test_header_without_notice"
+    },
+    {
+      "suite": "tests.test_data_validation",
+      "test": "test_bad_channel_day_is_excluded_and_audited[0:30--0.1-negative_interval]"
+    },
+    {
+      "suite": "tests.test_data_validation",
+      "test": "test_bad_channel_day_is_excluded_and_audited[0:30-nan-missing_or_nonfinite_interval]"
+    },
+    {
+      "suite": "tests.test_data_validation",
+      "test": "test_bad_channel_day_is_excluded_and_audited[0:30-inf-missing_or_nonfinite_interval]"
+    },
+    {
+      "suite": "tests.test_data_validation",
+      "test": "test_bad_channel_day_is_excluded_and_audited[Row Quality-NA-non_actual_or_unknown_quality]"
+    },
+    {
+      "suite": "tests.test_data_validation",
+      "test": "test_bad_channel_day_is_excluded_and_audited[Consumption Category-EXPORT-invalid_channel]"
+    },
+    {
+      "suite": "tests.test_data_validation",
+      "test": "test_bad_channel_day_is_excluded_and_audited[Customer-0-invalid_customer]"
+    },
+    {
+      "suite": "tests.test_data_validation",
+      "test": "test_bad_channel_day_is_excluded_and_audited[Postcode-20-invalid_postcode]"
+    },
+    {
+      "suite": "tests.test_data_validation",
+      "test": "test_bad_channel_day_is_excluded_and_audited[Generator Capacity-0-invalid_capacity]"
+    },
+    {
+      "suite": "tests.test_data_validation",
+      "test": "test_bad_channel_day_is_excluded_and_audited[date-value8-invalid_date]"
+    },
+    {
+      "suite": "tests.test_data_validation",
+      "test": "test_all_duplicate_candidates_are_rejected"
+    },
+    {
+      "suite": "tests.test_data_validation",
+      "test": "test_both_dst_transitions_are_excluded[2010-10-03]"
+    },
+    {
+      "suite": "tests.test_data_validation",
+      "test": "test_both_dst_transitions_are_excluded[2011-04-03]"
+    },
+    {
+      "suite": "tests.test_data_validation",
+      "test": "test_absent_controlled_load_is_not_created"
+    },
+    {
+      "suite": "tests.test_data_validation",
+      "test": "test_outside_year_and_metadata_conflicts"
+    },
+    {
+      "suite": "tests.test_data_validation",
+      "test": "test_high_generation_is_warning_not_automatic_deletion"
+    },
+    {
+      "suite": "tests.test_interval_units",
+      "test": "test_energy_power_and_midnight_are_physical"
+    },
+    {
+      "suite": "tests.test_interval_units",
+      "test": "test_summer_timezone"
+    },
+    {
+      "suite": "tests.test_interval_units",
+      "test": "test_conversion_rejects_dst_even_if_validation_skipped"
+    },
+    {
+      "suite": "tests.test_pipeline",
+      "test": "test_pipeline_writes_traceable_outputs_and_real_chart"
+    }
+  ]
+}

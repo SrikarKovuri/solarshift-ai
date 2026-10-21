@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "solarshift-ai"
+version = "0.1.0"
+description = "Closing the Peak: reproducible household solar data and demand-response research"
+requires-python = ">=3.11,<3.14"
+dependencies = ["numpy==2.2.6", "pandas==2.2.3", "pyarrow==19.0.1", "plotly==6.0.1"]
+
+[project.optional-dependencies]
+dev = ["pytest==8.3.5"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

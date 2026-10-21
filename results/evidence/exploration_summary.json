@@ -1,0 +1,12 @@
+{
+  "customer": 1,
+  "start": "2012-07-01",
+  "end_exclusive": "2012-07-08",
+  "accepted_intervals": 1008,
+  "interpretation": "Historical observations only; missing channels are not zero.",
+  "energy_kwh_by_channel": {
+    "CL": 59.272,
+    "GC": 144.828,
+    "GG": 62.636
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "checks": [
+    {
+      "file": "Solar home 2010-2011.csv",
+      "accepted_intervals": 12876336,
+      "source_energy_kwh": {
+        "GC": 1820109.082999984,
+        "GG": 632295.5629999819,
+        "CL": 263401.51600000274
+      },
+      "parquet_energy_kwh": {
+        "GC": 1820109.0829999999,
+        "GG": 632295.5630000001,
+        "CL": 263401.516
+      },
+      "source_to_parquet_totals": "passed",
+      "power_and_slot_invariants": "passed"
+    },
+    {
+      "file": "Solar home 2011-2012.csv",
+      "accepted_intervals": 12898896,
+      "source_energy_kwh": {
+        "GC": 1711570.319999968,
+        "GG": 622111.5869999877,
+        "CL": 255629.15100000505
+      },
+      "parquet_energy_kwh": {
+        "GC": 1711570.3200000003,
+        "GG": 622111.5870000003,
+        "CL": 255629.151
+      },
+      "source_to_parquet_totals": "passed",
+      "power_and_slot_invariants": "passed"
+    },
+    {
+      "file": "Solar home 2012-2013.csv",
+      "accepted_intervals": 12799248,
+      "source_energy_kwh": {
+        "GC": 1665237.7319999964,
+        "GG": 648662.6619999972,
+        "CL": 238370.29200000377
+      },
+      "parquet_energy_kwh": {
+        "GC": 1665237.7320000003,
+        "GG": 648662.662,
+        "CL": 238370.292
+      },
+      "source_to_parquet_totals": "passed",
+      "power_and_slot_invariants": "passed"
+    }
+  ],
+  "status": "passed"
+}
