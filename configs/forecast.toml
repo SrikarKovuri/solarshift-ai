@@ -1,0 +1,19 @@
+[forecast]
+processed_dir = "data/processed"
+output_dir = "data/features"
+results_dir = "results/generated/baseline"
+timezone = "Australia/Sydney"
+issue_hour = 18
+observation_delay_minutes = 30
+cohort_size = 30
+cohort_seed = 2112
+minimum_training_coverage = 0.95
+train_start = "2010-07-01"
+train_end = "2011-12-31"
+validation_start = "2012-01-01"
+validation_end = "2012-06-30"
+test_start = "2012-07-01"
+test_end = "2013-06-30"
+
+# Test boundaries are recorded, but this development pipeline cannot load/evaluate
+# final-test observations. Forecasts are for a complete following local day.

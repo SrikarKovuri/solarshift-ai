@@ -1,0 +1,694 @@
+{
+  "generated_at_utc": "2026-10-22T05:05:41.630073+00:00",
+  "config_sha256": "12e865163812f45a461360dd028a0f86d0dedaa420e6c88dc9b641e78f628c7c",
+  "data_quality_manifest_sha256": "842f840587b58c482de74c3ada10fa93a194a179465e6177b13522c281ef9c3e",
+  "cohort": [
+    3,
+    8,
+    22,
+    23,
+    24,
+    40,
+    60,
+    61,
+    89,
+    91,
+    110,
+    119,
+    128,
+    129,
+    151,
+    175,
+    176,
+    187,
+    200,
+    206,
+    207,
+    222,
+    229,
+    241,
+    250,
+    256,
+    276,
+    282,
+    287,
+    289
+  ],
+  "coverage_source_sha256": "e4f17907afc43802dde6a523d93caa23f3e15ed389e1c6d9e274beea61a40b3f",
+  "selection": {
+    "eligible_households": 300,
+    "training_calendar_days": 549,
+    "coverage_threshold": 0.95,
+    "seed": 2112,
+    "selection": "Seeded uniform sample of training-eligible households; not a representative population sample."
+  },
+  "feature_columns": [
+    "slot",
+    "weekday",
+    "weekend",
+    "month",
+    "season",
+    "slot_sin",
+    "slot_cos",
+    "weekday_sin",
+    "weekday_cos",
+    "month_sin",
+    "month_cos",
+    "capacity_kwp",
+    "lag_2d_kwh",
+    "lag_7d_kwh",
+    "rolling_7d_kwh",
+    "previous_day_or_2d_kwh",
+    "previous_day_available"
+  ],
+  "availability_columns": [
+    "lag_2d_available_at",
+    "lag_7d_available_at",
+    "rolling_7d_available_at",
+    "previous_day_or_2d_available_at"
+  ],
+  "issue_hour_local": 18,
+  "observation_delay_minutes": 30,
+  "splits": {
+    "train_start": "2010-07-01",
+    "train_end": "2011-12-31",
+    "validation_start": "2012-01-01",
+    "validation_end": "2012-06-30",
+    "test_start": "2012-07-01",
+    "test_end": "2013-06-30"
+  },
+  "final_test": "Reserved; observations on/after test_start are not loaded by this command.",
+  "files": [
+    {
+      "filename": "household_3_GC.parquet",
+      "customer": 3,
+      "channel": "GC",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "b3a66ec1652606f64515d873b48223fb2bc85dce60dc4d81d20a561ff6a54c69"
+    },
+    {
+      "filename": "household_3_GG.parquet",
+      "customer": 3,
+      "channel": "GG",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "edc6b8e4f9b6abb1895a1100dbc047c63d509f47e101ef0b5853aa72725d77ac"
+    },
+    {
+      "filename": "household_8_GC.parquet",
+      "customer": 8,
+      "channel": "GC",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "3903f2baa812aded6c686b7a76c80028da56d741f33be4982db64933f8986876"
+    },
+    {
+      "filename": "household_8_GG.parquet",
+      "customer": 8,
+      "channel": "GG",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "e72049e26929d0a98c1fcd55c9ec4bd6e96bba1abeb9eaa4d9d960903370dd0e"
+    },
+    {
+      "filename": "household_22_GC.parquet",
+      "customer": 22,
+      "channel": "GC",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "6dd7d174f937f0a652af6c7409162b830aa6df8d9e05e98a4715c1f5a3ba7844"
+    },
+    {
+      "filename": "household_22_GG.parquet",
+      "customer": 22,
+      "channel": "GG",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "9bc2cb8c3bf2b69c6f0fa9e95faaa70072c4276257a4d25dfc7ab8324ca9be55"
+    },
+    {
+      "filename": "household_23_GC.parquet",
+      "customer": 23,
+      "channel": "GC",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "8957fac35f22b542ecf0b4d95732517d65ca8a71ed1c624142824a0578dbd709"
+    },
+    {
+      "filename": "household_23_GG.parquet",
+      "customer": 23,
+      "channel": "GG",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "62b9a0199fe8df3f26b088d26a0fd762945e8bfcb5a5b6593ef397510dcc498d"
+    },
+    {
+      "filename": "household_24_GC.parquet",
+      "customer": 24,
+      "channel": "GC",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "af3beee0efd68c29c40d8bcae1f6d8c13c09a582d31566e25010faa0b54370ab"
+    },
+    {
+      "filename": "household_24_GG.parquet",
+      "customer": 24,
+      "channel": "GG",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "3cc01eace8818f4f13b7d76901755f9fe95ac029d031c1df14c81cf642337259"
+    },
+    {
+      "filename": "household_40_GC.parquet",
+      "customer": 40,
+      "channel": "GC",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "d6b6b1a08c4ce15bb1017117e361bb7f3c3d39d378689fc45caefb9a69c5da9b"
+    },
+    {
+      "filename": "household_40_GG.parquet",
+      "customer": 40,
+      "channel": "GG",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "3dc9e5b4e1471de99b753d8828b5030dc24f9d0a688b74c8e44ef3a5746b0ad7"
+    },
+    {
+      "filename": "household_60_GC.parquet",
+      "customer": 60,
+      "channel": "GC",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "88a709a479a1157e1c41d87a4aa9a2053ed2defdb84c0a3c8e1a667cd865526e"
+    },
+    {
+      "filename": "household_60_GG.parquet",
+      "customer": 60,
+      "channel": "GG",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "6bd610cd25fbe330f0e8de626eb34bb32c8127976a3b302bc552265afed11a10"
+    },
+    {
+      "filename": "household_61_GC.parquet",
+      "customer": 61,
+      "channel": "GC",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "7d81bb5095e538f0a50d06284ce6950fa4044d3b3ac939a7899dec355b67be8f"
+    },
+    {
+      "filename": "household_61_GG.parquet",
+      "customer": 61,
+      "channel": "GG",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "29a12197f8c93cf0b7005669423245b19a1c9bec18527a4fbd5e5ca2b7f290b0"
+    },
+    {
+      "filename": "household_89_GC.parquet",
+      "customer": 89,
+      "channel": "GC",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "b2cb464d19f276b25e2b61fb76d97919bc758758e1933ee8a2231d7f735c57a2"
+    },
+    {
+      "filename": "household_89_GG.parquet",
+      "customer": 89,
+      "channel": "GG",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "c2f851110fd8e88e3a9547ca70bc4c20c690fb29e533b54d6e42ca8b48fd3f06"
+    },
+    {
+      "filename": "household_91_GC.parquet",
+      "customer": 91,
+      "channel": "GC",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "8f4457d5fe2c965b0c2d97b3318be5c5faa00ebc2bc544e78ff7533597d5f6df"
+    },
+    {
+      "filename": "household_91_GG.parquet",
+      "customer": 91,
+      "channel": "GG",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "8ce64dade071aebcfc27ab179595ef8ec2ffe1902203eaf5043231f9106b24ba"
+    },
+    {
+      "filename": "household_110_GC.parquet",
+      "customer": 110,
+      "channel": "GC",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "a5ab66960c78ff3e7db354d941aad27b847df94acb368f2b611194faac7c4e27"
+    },
+    {
+      "filename": "household_110_GG.parquet",
+      "customer": 110,
+      "channel": "GG",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "8a0835995f908b300c639f5fc31339a06d98984d75961c186b4a0e29d1be8714"
+    },
+    {
+      "filename": "household_119_GC.parquet",
+      "customer": 119,
+      "channel": "GC",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "6716320a4c1a71c850bbdd4d50d046da872906af3143b88e5bf8e9a8c9001baa"
+    },
+    {
+      "filename": "household_119_GG.parquet",
+      "customer": 119,
+      "channel": "GG",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "fabf97c2bf0c9ac1e8842a3894ee8f67ddad04ac791035599b9dc421229ad7a6"
+    },
+    {
+      "filename": "household_128_GC.parquet",
+      "customer": 128,
+      "channel": "GC",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "a7af4d954165cb40bc4a08ad0840c3551e2a8e2668423aa1b3d87e3079321348"
+    },
+    {
+      "filename": "household_128_GG.parquet",
+      "customer": 128,
+      "channel": "GG",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "5f7fdb9eac25ea1b31890414c3b113f64c70fac65f636d8f77dd0e44008ee93a"
+    },
+    {
+      "filename": "household_129_GC.parquet",
+      "customer": 129,
+      "channel": "GC",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "6a9a922a942015ce87cd82851f5ceb2582f8c464ebf233a09331d4dde5e2ecce"
+    },
+    {
+      "filename": "household_129_GG.parquet",
+      "customer": 129,
+      "channel": "GG",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "e62c44633f9c9deb728ade70481a2cde43aaf546754374da6e855036d62abf42"
+    },
+    {
+      "filename": "household_151_GC.parquet",
+      "customer": 151,
+      "channel": "GC",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "53ab7ecc59a7e7656d1adad706a1f819b5322b8a727f2a7af8a5d99ef33205d6"
+    },
+    {
+      "filename": "household_151_GG.parquet",
+      "customer": 151,
+      "channel": "GG",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "3cb1347f771af4343fb2b8e4541878702d0ea84aa47d19781c8f826577a10fa9"
+    },
+    {
+      "filename": "household_175_GC.parquet",
+      "customer": 175,
+      "channel": "GC",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "1e0a8b5991092d8467bdc0b71d138e76aa42fabea6b6f1c7d88c0e075c390239"
+    },
+    {
+      "filename": "household_175_GG.parquet",
+      "customer": 175,
+      "channel": "GG",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "a639958f1bf0054eb72461b5e7aed707d5cb15158de3177b8fdad6720ab46ea5"
+    },
+    {
+      "filename": "household_176_GC.parquet",
+      "customer": 176,
+      "channel": "GC",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "e3cd3038a100cd7c2cc16390edfd05005f13b39a6bf1d8df7daf44006e2c1705"
+    },
+    {
+      "filename": "household_176_GG.parquet",
+      "customer": 176,
+      "channel": "GG",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "5f4a50c3c7c0d1fbd5c4f81207289c6c3364dc1e71b9c3b4f5bfcd5016f3e5aa"
+    },
+    {
+      "filename": "household_187_GC.parquet",
+      "customer": 187,
+      "channel": "GC",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "df8f664376d451ac88d8e0ca2367cc7ff6e64460e56c9c329ff13fc575223d40"
+    },
+    {
+      "filename": "household_187_GG.parquet",
+      "customer": 187,
+      "channel": "GG",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "177b4801f743471595d6a2dac5efaba2d3bdb717bdf3d3dc0c00c16597be3798"
+    },
+    {
+      "filename": "household_200_GC.parquet",
+      "customer": 200,
+      "channel": "GC",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "644c5a73c3f97167ea933abefd0f0717f462950150a6c3b70a0bda8e3f914ddd"
+    },
+    {
+      "filename": "household_200_GG.parquet",
+      "customer": 200,
+      "channel": "GG",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "f7539b23ec54e6eeeb767c83ca37087f04339bba2d882d2a1c9c46486461dd16"
+    },
+    {
+      "filename": "household_206_GC.parquet",
+      "customer": 206,
+      "channel": "GC",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "d82f13481e2ed643072b24134e238d3a8105ddc3ad6af2cc173b58db3571aa8e"
+    },
+    {
+      "filename": "household_206_GG.parquet",
+      "customer": 206,
+      "channel": "GG",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "174b523d749afdc5f74b2840ee8002f8e3b4222eff103850aae7285964dbced5"
+    },
+    {
+      "filename": "household_207_GC.parquet",
+      "customer": 207,
+      "channel": "GC",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "8dc372beea5ee46b11f084643f43d9f3e0bd7b3cfa094f0ac0fb17e61113e50b"
+    },
+    {
+      "filename": "household_207_GG.parquet",
+      "customer": 207,
+      "channel": "GG",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "b8c3e30e29407226a8e8a5cc8961c3d018ddef202834ca10fc89deef971ecc84"
+    },
+    {
+      "filename": "household_222_GC.parquet",
+      "customer": 222,
+      "channel": "GC",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "6f50483b69305624cfc60330358f09ecfced8a8927c5b1dd1a2c8933ea6fd912"
+    },
+    {
+      "filename": "household_222_GG.parquet",
+      "customer": 222,
+      "channel": "GG",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "7279e8e5b9d3751975f09dcb7fd359a8c3cc76c0884344c862640e163e9f55ef"
+    },
+    {
+      "filename": "household_229_GC.parquet",
+      "customer": 229,
+      "channel": "GC",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "ad1e1fcae6c9282e228e805afcc9a668ed5d2fc4e0b955e79d44513758dc1ab3"
+    },
+    {
+      "filename": "household_229_GG.parquet",
+      "customer": 229,
+      "channel": "GG",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "78bb0499ae9415ae83a61efad76509379118e300bd4c865a57725a65f8d5d980"
+    },
+    {
+      "filename": "household_241_GC.parquet",
+      "customer": 241,
+      "channel": "GC",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "ecb417fb35a9e53841632552b470d459a01ae7fec7917d2b38b55c0f86fd78fb"
+    },
+    {
+      "filename": "household_241_GG.parquet",
+      "customer": 241,
+      "channel": "GG",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "201c74a6c681a6b308bd2ae813ec0f59e1bba139ef94dc268fbbb8cdcdf9ed79"
+    },
+    {
+      "filename": "household_250_GC.parquet",
+      "customer": 250,
+      "channel": "GC",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "b99f24d070450dfe616f5cfaaa815595bf1508679389dad364133150d9962833"
+    },
+    {
+      "filename": "household_250_GG.parquet",
+      "customer": 250,
+      "channel": "GG",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "67a821438309a1d746efa50d30c627b1632aa58b535dac9a9b4e3a0ac037baa2"
+    },
+    {
+      "filename": "household_256_GC.parquet",
+      "customer": 256,
+      "channel": "GC",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "13f07acb9fc7a549d7d0a2988921ce12df29549db8a17da57cb10ee252fe631b"
+    },
+    {
+      "filename": "household_256_GG.parquet",
+      "customer": 256,
+      "channel": "GG",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "5c95c49c9934d094c3da91d8db1a25a6dfb33b8a2c46fc36f56fd4180b89106c"
+    },
+    {
+      "filename": "household_276_GC.parquet",
+      "customer": 276,
+      "channel": "GC",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "0dcfe3a29cc8e3d959fc4626920703f428382127207e805212d7a0664733bee0"
+    },
+    {
+      "filename": "household_276_GG.parquet",
+      "customer": 276,
+      "channel": "GG",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "0ca328af047b43bf76f9dbc12f814ad6bf9089acbf04ef34f20d96ef26e44fb9"
+    },
+    {
+      "filename": "household_282_GC.parquet",
+      "customer": 282,
+      "channel": "GC",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "9a8364af7f213e14db717e1aa0e4a6ba0b56495951f364ed8e4d6fc370f6473a"
+    },
+    {
+      "filename": "household_282_GG.parquet",
+      "customer": 282,
+      "channel": "GG",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "2e59444f3bb773af2fb4ac8237b0c886456336624d8d4ad8eb072e00168e1623"
+    },
+    {
+      "filename": "household_287_GC.parquet",
+      "customer": 287,
+      "channel": "GC",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "77f2a479592faf2937e75deb089d6017ea69b67ab0d4a42ec783bd71dee955d6"
+    },
+    {
+      "filename": "household_287_GG.parquet",
+      "customer": 287,
+      "channel": "GG",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "36bc7d419d532d0dcf9d18504e17dba2bc9e19645aa17f4433790cca32019f98"
+    },
+    {
+      "filename": "household_289_GC.parquet",
+      "customer": 289,
+      "channel": "GC",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "72ab1ff4ea586d6e6f7ba578347e974c3118f1d7a505e475567c69dcff154226"
+    },
+    {
+      "filename": "household_289_GG.parquet",
+      "customer": 289,
+      "channel": "GG",
+      "rows_by_split": {
+        "train": 24816,
+        "validation": 8352
+      },
+      "sha256": "8756e5d3fd1eb6b44ba8edd002fe533381d27c09bca6b7b77df22a4936921cdd"
+    }
+  ],
+  "source_files": [
+    {
+      "filename": "intervals_2010_2011.parquet",
+      "sha256": "47f52cdd145d69b05953b7d318ff332e6a607d43b3014b8932dd4424c6fa922a"
+    },
+    {
+      "filename": "intervals_2011_2012.parquet",
+      "sha256": "24677f8a52c4cd8ca01990643fb980f46012320b2c98975a290492961886a4aa"
+    }
+  ],
+  "excluded_observed_channel_days": 2160
+}

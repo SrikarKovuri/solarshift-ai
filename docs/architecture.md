@@ -1,6 +1,6 @@
 # Architecture and stage boundary
 
-Day 1 executable flow:
+Data foundation:
 
 `complete archive/local CSVs → parse → validate → interval Parquet + audit → historical chart`
 
@@ -12,9 +12,18 @@ cross-year household metadata and publishes outputs only after computation succe
 `explore.py` reads only the selected household/date range and creates an offline chart.
 `common.py` centralises configuration, SHA-256 and strict JSON output.
 
-The future flow adds cutoff-aware features, temporal splits, persistence,
-two XGBoost targets, evaluation, transparent pricing, constrained response,
-SHAP and a Streamlit interface. None is represented as working in Day 1.
+Forecasting foundation:
+
+`validated intervals → training-only cohort → cutoff-aware features → train/validation partitions → weekly persistence → validation metrics + interactive report`
+
+`features/dataset.py` defines feature columns, calendar lookups, timestamp provenance
+and split membership. `features/build.py` verifies input hashes and writes only
+development datasets. `models/persistence.py` predicts the seven-day lag.
+`evaluation/metrics.py` defines physical-unit metrics and complete-cohort aggregation;
+`evaluation/baseline.py` verifies feature hashes and evaluates validation only.
+
+Two XGBoost targets, transparent pricing, constrained response, SHAP and the
+Streamlit interface remain future work.
 
 ## Interval schema
 

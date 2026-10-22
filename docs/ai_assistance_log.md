@@ -30,3 +30,13 @@ ethics/integration. Do not attribute the generated code to a teammate without
 their actual contribution. Each teammate should append the changes they made,
 review performed, findings and date. Preserve substantive prompts, generated
 outputs and human modifications/verification in the final report appendix.
+
+
+## Forecasting increment — 22 October 2026
+
+The user requested the next planned feature/baseline work, descriptive milestone
+names, and computer access as needed. Existing commit/push authorisation remains.
+Codex drafted feature construction, leakage/partition tests, persistence evaluation,
+an independent source-join audit, charts and documentation; commands were executed
+and their outputs retained. No human review or teammate authorship is asserted.
+The conversation retains the exact request and generated changes for the appendix.

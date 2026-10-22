@@ -8,9 +8,10 @@ dist/
 .DS_Store
 data/raw/
 data/processed/
+data/features/
 results/generated/
 results/evidence/*.xml
-models/
+/models/
 .env
 .env.*
 !.env.example

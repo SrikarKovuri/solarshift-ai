@@ -11,10 +11,14 @@
 - GC excludes controlled load; GG is gross generation. Net-metered self-consumption
   or P2P surplus would be a future accounting assumption.
 - Annual wide-table parsing is not fully streaming; interval output is batched.
-- Initial preparation hashes and validates observations across years, but does not
-  inspect holdout model performance or tune on test errors.
+- Initial preparation validates observations across years. The forecasting increment
+  uses training/validation only; final-test performance remains unevaluated.
 - No weather forecast archive covering these dates has been established.
 - No customer elasticity, appliance constraints, network topology or demographic
   ground truth is available. Later simulation must state these assumptions.
 - No software redistribution licence has been chosen by the team.
-- Only Day 1 functionality is implemented. A historical chart is not a finished app.
+- Baseline reports are not a finished application; learned models and simulation remain pending.
+- Observation availability is an assumed 30-minute delay, not a verified historical
+  live smart-meter service. Longer-delay scenarios need separate evaluation.
+- The baseline uses a seeded 30-household pilot. Generalisation beyond this cohort
+  is untested; strict history completeness removes forecast days.

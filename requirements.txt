@@ -1,4 +1,4 @@
-# Day 1 only. Later-stage dependencies will be added when implemented.
+# Data processing and persistence benchmark. Modelling dependencies are added when needed.
 numpy==2.2.6
 pandas==2.2.3
 pyarrow==19.0.1

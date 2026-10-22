@@ -3,16 +3,16 @@
 An ENGG2112 offline research prototype investigating whether household demand and
 PV forecasts can inform transparent pricing and simulated evening load shifting.
 
-**Current stage: Day 1, real-data acquisition, validation and exploration.**
-Forecasting, pricing, behavioural simulation, SHAP and the Streamlit application
-are planned later stages and are not implemented in this release. No forecast
-accuracy, bill saving, peak reduction or emissions benefit is claimed.
+**Current increment: forecast-ready features and a measured weekly persistence benchmark.**
+Real-data ingestion, temporal feature checks and validation evaluation are operational.
+XGBoost, pricing, response simulation, SHAP and the Streamlit application remain
+future work. Baseline errors are measured; no model improvement or energy saving is claimed.
 
 Repository: https://github.com/SrikarKovuri/solarshift-ai
 
 ## Quick start
 
-Python 3.11–3.13 is permitted by the package; the executed Day 1 environment is
+Python 3.11–3.13 is permitted by the package; the verified environment is
 Python 3.12 on Apple Silicon. Other environments require their own verification.
 From this repository directory:
 
@@ -106,6 +106,55 @@ Three years contain millions of intervals. Processing proceeds one annual file
 at a time and writes interval batches to Parquet. Allow several minutes and spare
 disk space. Annual CSV parsing still uses memory proportional to one source year.
 
+## Build the forecasting dataset and benchmark
+
+After preparing the original dataset, run:
+
+```bash
+python -m solarshift.features.build --config configs/forecast.toml
+python -m solarshift.evaluation.baseline --config configs/forecast.toml
+python scripts/verify_baseline.py
+```
+
+Open `results/generated/baseline/baseline_report.html` for interactive demand/PV
+comparisons, error-by-interval and household charts, and full-day/evening tables.
+This self-contained report works offline. The default audit script checks the
+repository's default experiment paths.
+
+The reproducible pilot contains 30 households chosen using **training coverage
+only**, with seed 2112. It is not a representative population sample. The pipeline
+creates 1,488,960 training rows and evaluates 501,120 validation rows across GC/GG.
+The recorded run has 174 eligible validation days per household/target out of 182.
+These counts describe the current data/configuration, not hard-coded targets.
+
+- Forecast issue: 18:00 Australia/Sydney on the preceding calendar day.
+- Reading availability: interval end plus 30 minutes (an explicit research assumption).
+- Features: calendar cycles, capacity, two-day/weekly lags, seven same-slot readings
+  from days -2 through -8, and eligible previous-day values with a two-day fallback.
+- Only slots 1–35 of the preceding day are eligible at the default cutoff. The
+  availability indicator distinguishes observed previous-day values from fallback.
+- Any missing required history excludes the full 48-slot forecast day. Target values
+  and provenance columns are excluded from the explicit model-feature list.
+- Training: July 2010–December 2011. Validation: January–June 2012.
+- Final test: July 2012–June 2013, reserved and not loaded by the feature command.
+
+| Target | Window | Validation MAE (kWh/half-hour) | RMSE (kWh/half-hour) |
+|---|---|---:|---:|
+| General consumption | Full day | 0.189325 | 0.366841 |
+| General consumption | 16:00–21:00 | 0.299297 | 0.503417 |
+| Gross PV | Full day | 0.074690 | 0.189625 |
+| Gross PV | 16:00–21:00 | 0.034519 | 0.113941 |
+
+These are interval-weighted household errors. Community-sum errors are separate
+in the report and require the complete fixed cohort. Night-time PV zeros can make
+full-day PV errors appear small; these results are not a daylight-only assessment.
+Later XGBoost comparisons must use exactly the same eligibility masks.
+
+Outputs: `data/features/manifest.json`, per-household/target feature Parquet files,
+`excluded_forecast_days.csv`, and `results/generated/baseline/` containing predictions,
+metrics, household scores, coverage and the HTML report. Compact evidence is
+committed under `results/evidence/baseline_*`; large generated files are ignored.
+
 ## Interpretation
 
 - **GC**: general consumption; the primary demand definition excludes CL.
@@ -141,8 +190,9 @@ Kovuri (evaluation, ethics, integration). These roles do not imply contributions
 already performed. Actual AI assistance and human verification are recorded in
 [the assistance log](docs/ai_assistance_log.md).
 
-The seven-day sequence is staged development. Day 2 starts only when requested.
-Commit dates reflect actual work; scheduled dates are not fabricated.
+Development proceeds through separately reviewed functional increments.
+Commit dates and the development log reflect actual work. Model training starts
+only when the next increment is requested.
 
 ## Source and software rights
 

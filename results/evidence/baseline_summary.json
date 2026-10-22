@@ -1,0 +1,131 @@
+{
+  "generated_at_utc": "2026-10-22T12:56:30.400798+00:00",
+  "model": "weekly_seasonal_persistence",
+  "partition": "validation",
+  "test_evaluated": false,
+  "cohort": [
+    3,
+    8,
+    22,
+    23,
+    24,
+    40,
+    60,
+    61,
+    89,
+    91,
+    110,
+    119,
+    128,
+    129,
+    151,
+    175,
+    176,
+    187,
+    200,
+    206,
+    207,
+    222,
+    229,
+    241,
+    250,
+    256,
+    276,
+    282,
+    287,
+    289
+  ],
+  "feature_manifest_sha256": "099d4aaac2e6799dc9adb80b5df8cc76bcd691867f1d37b6b6487b6d07311b5f",
+  "metrics": [
+    {
+      "scope": "household_interval_weighted",
+      "channel": "GC",
+      "window": "full_day",
+      "n": 250560,
+      "mae_kwh": 0.18932516762452106,
+      "rmse_kwh": 0.36684110184850854,
+      "mae_kw": 0.3786503352490421,
+      "rmse_kw": 0.7336822036970171
+    },
+    {
+      "scope": "household_interval_weighted",
+      "channel": "GC",
+      "window": "evening_16_21",
+      "n": 52200,
+      "mae_kwh": 0.2992966091954023,
+      "rmse_kwh": 0.5034172440713095,
+      "mae_kw": 0.5985932183908046,
+      "rmse_kw": 1.006834488142619
+    },
+    {
+      "scope": "household_interval_weighted",
+      "channel": "GG",
+      "window": "full_day",
+      "n": 250560,
+      "mae_kwh": 0.074689691091954,
+      "rmse_kwh": 0.18962489215452927,
+      "mae_kw": 0.149379382183908,
+      "rmse_kw": 0.37924978430905854
+    },
+    {
+      "scope": "household_interval_weighted",
+      "channel": "GG",
+      "window": "evening_16_21",
+      "n": 52200,
+      "mae_kwh": 0.03451932950191571,
+      "rmse_kwh": 0.11394137826967135,
+      "mae_kw": 0.06903865900383142,
+      "rmse_kw": 0.2278827565393427
+    },
+    {
+      "scope": "complete_cohort_sum",
+      "channel": "GC",
+      "window": "full_day",
+      "n": 8352,
+      "mae_kwh": 1.7780150862068966,
+      "rmse_kwh": 2.7132011930266056,
+      "mae_kw": 3.5560301724137933,
+      "rmse_kw": 5.426402386053211
+    },
+    {
+      "scope": "complete_cohort_sum",
+      "channel": "GC",
+      "window": "evening_16_21",
+      "n": 1740,
+      "mae_kwh": 2.7370408045977017,
+      "rmse_kwh": 3.8202397056494624,
+      "mae_kw": 5.474081609195403,
+      "rmse_kw": 7.640479411298925
+    },
+    {
+      "scope": "complete_cohort_sum",
+      "channel": "GG",
+      "window": "full_day",
+      "n": 8352,
+      "mae_kwh": 1.842032686781609,
+      "rmse_kwh": 3.90716255953636,
+      "mae_kw": 3.684065373563218,
+      "rmse_kw": 7.81432511907272
+    },
+    {
+      "scope": "complete_cohort_sum",
+      "channel": "GG",
+      "window": "evening_16_21",
+      "n": 1740,
+      "mae_kwh": 0.8191155172413793,
+      "rmse_kwh": 1.9324894457786765,
+      "mae_kw": 1.6382310344827586,
+      "rmse_kw": 3.864978891557353
+    }
+  ],
+  "validation_predictions": 501120,
+  "validation_calendar_days": 182,
+  "eligible_channel_days": 10440,
+  "complete_cohort_days_by_channel": {
+    "GC": 174,
+    "GG": 174
+  },
+  "weighting": "Pooled: equal weight per eligible household interval. Community: sum across fixed cohort on complete days.",
+  "eligibility": "Both baseline and later learned-model comparisons must use these identical complete-day masks.",
+  "feature_policy": "Previous-day observations only when available; otherwise 2-day lag. Rolling mean uses days -2 through -8."
+}

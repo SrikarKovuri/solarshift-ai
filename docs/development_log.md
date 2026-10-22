@@ -1,9 +1,8 @@
 # Development log
 
-## Day 1 — authorised 21 October; completed 22 October 2026 (Australia/Sydney)
+## Data ingestion and validation — 21–22 October 2026 (Australia/Sydney)
 
-The brief scheduled Day 1 for 22 October. Work began after explicit user approval
-on 21 October and continued on 22 October. Source acquisition and initial test
+Work began after explicit user approval on 21 October and continued on 22 October. Source acquisition and initial test
 timestamps reflect the actual earlier execution; no timestamps or commits are backdated.
 
 ### Delivered
@@ -55,10 +54,69 @@ the documented setup uses a regular package installation, which was verified.
 
 ### Stage boundary and next work
 
-Day 2 has not started. Next: forecast availability cutoff, leakage-safe features,
-chronological split and seasonal persistence. DST lag dependencies, licence
+At this checkpoint, forecasting had not started. The next increment was forecast
+availability, leakage-safe features, chronological splitting and seasonal persistence. DST lag dependencies, licence
 corroboration and the dataset's historical sampling limitations remain explicit.
 No forecast performance, simulated savings or trained models are claimed.
 
 Commit purpose: `feat(data): establish Ausgrid ingestion and validation pipeline`.
 Human team review is pending; planned ownership is not claimed as completed contribution.
+
+
+## Forecast-ready features and persistence benchmark — 22 October 2026
+
+The user authorised the next functional increment and requested descriptive
+milestone names rather than numbered-day labels. This log records the actual
+working date; it does not imply work occurred on an additional calendar day.
+
+### Implemented
+
+- An 18:00 previous-day cutoff and 30-minute observation-availability allowance.
+- Two-day and seven-day calendar lags, past-only rolling means, eligible previous-day
+  readings with an explicit fallback indicator, and cyclical calendar features.
+- Per-feature availability timestamps and executable leakage assertions.
+- Training-only cohort selection (30 of the training-eligible households; seed 2112).
+- Chronological partition definitions and development-only dataset generation.
+- Weekly persistence predictions, full-day/evening MAE and RMSE, household scores,
+  fixed-cohort aggregate errors, coverage reports and an offline interactive report.
+
+### Executed evidence
+
+1,488,960 training rows and 501,120 validation rows across two targets. Final-test
+observations are excluded from the builder's source-file selection and evaluation.
+Each selected household/target has 174 eligible validation days out of 182.
+2,160 observed channel-days across development are rejected for incomplete targets
+or required history; already-excluded target days are additionally absent upstream.
+
+Validation demand MAE is 0.189325 kWh per half-hour overall and 0.299297 in the
+16:00–21:00 window. PV MAE is 0.074690 overall and 0.034519 in that window.
+Complete metrics and weighting are in `results/evidence/baseline_summary.json`.
+No XGBoost improvement or physical/financial benefit has been measured.
+
+The independent audit joins every validation target and prediction back to dated
+source intervals, independently recomputes pooled MAE/RMSE, and checks feature
+availability across every accepted training/validation row. Tests cover future-data
+perturbation invariance, exact cutoff boundaries, missing-day/DST lag handling,
+partition boundaries, cohort-selection independence, metrics and fixed-cohort sums.
+Final executed test counts are in `results/evidence/forecast_tests.json`.
+
+### Completion verification
+
+After resuming the interrupted increment, all 51 tests passed again and the
+baseline evaluation reproduced the recorded metrics. The independent source-join
+audit passed for all 501,120 predictions and 1,990,080 feature rows. Dependency
+consistency also passed. The regenerated report was inspected in the browser;
+the chart now scrolls horizontally in narrow windows to avoid overlapping axes
+and subplot titles.
+
+The usable outputs at this milestone are command-line data/forecast pipelines
+and offline interactive reports. The intended final group-project deliverable
+remains an integrated local application with household/date selection, trained
+forecasts, pricing controls and response simulation. That application is not
+yet complete; the remaining work follows the agreed staged plan.
+
+### Next increment
+
+Train and validate separate demand/PV XGBoost models on this fixed benchmark,
+with reproducible persistence and training-carbon instrumentation. This work has
+not begun. Human team review remains pending; AI assistance is recorded separately.

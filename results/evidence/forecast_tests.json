@@ -1,0 +1,215 @@
+{
+  "tests": "51",
+  "failures": "0",
+  "errors": "0",
+  "skipped": "0",
+  "time": "1.126",
+  "timestamp": "2026-10-22T16:06:58.112666+11:00",
+  "command": "PYTHONPATH=src python -m pytest -q --junitxml=results/evidence/forecast_tests.xml",
+  "cases": [
+    {
+      "suite": "tests.test_acquisition",
+      "test": "test_only_expected_data_extracted_and_manifest_hashed"
+    },
+    {
+      "suite": "tests.test_acquisition",
+      "test": "test_incomplete_archive_cannot_be_salvaged_silently"
+    },
+    {
+      "suite": "tests.test_acquisition",
+      "test": "test_missing_expected_member_fails_before_extraction"
+    },
+    {
+      "suite": "tests.test_data_parsing",
+      "test": "test_real_date_and_header_variants[True-1-Jul-10]"
+    },
+    {
+      "suite": "tests.test_data_parsing",
+      "test": "test_real_date_and_header_variants[True-1/07/2010]"
+    },
+    {
+      "suite": "tests.test_data_parsing",
+      "test": "test_real_date_and_header_variants[False-1-Jul-10]"
+    },
+    {
+      "suite": "tests.test_data_parsing",
+      "test": "test_real_date_and_header_variants[False-1/07/2010]"
+    },
+    {
+      "suite": "tests.test_data_parsing",
+      "test": "test_quality_na_not_lost_to_csv_missing_value_parser"
+    },
+    {
+      "suite": "tests.test_data_parsing",
+      "test": "test_rejects_wrong_interval_order"
+    },
+    {
+      "suite": "tests.test_data_parsing",
+      "test": "test_header_without_notice"
+    },
+    {
+      "suite": "tests.test_data_validation",
+      "test": "test_bad_channel_day_is_excluded_and_audited[0:30--0.1-negative_interval]"
+    },
+    {
+      "suite": "tests.test_data_validation",
+      "test": "test_bad_channel_day_is_excluded_and_audited[0:30-nan-missing_or_nonfinite_interval]"
+    },
+    {
+      "suite": "tests.test_data_validation",
+      "test": "test_bad_channel_day_is_excluded_and_audited[0:30-inf-missing_or_nonfinite_interval]"
+    },
+    {
+      "suite": "tests.test_data_validation",
+      "test": "test_bad_channel_day_is_excluded_and_audited[Row Quality-NA-non_actual_or_unknown_quality]"
+    },
+    {
+      "suite": "tests.test_data_validation",
+      "test": "test_bad_channel_day_is_excluded_and_audited[Consumption Category-EXPORT-invalid_channel]"
+    },
+    {
+      "suite": "tests.test_data_validation",
+      "test": "test_bad_channel_day_is_excluded_and_audited[Customer-0-invalid_customer]"
+    },
+    {
+      "suite": "tests.test_data_validation",
+      "test": "test_bad_channel_day_is_excluded_and_audited[Postcode-20-invalid_postcode]"
+    },
+    {
+      "suite": "tests.test_data_validation",
+      "test": "test_bad_channel_day_is_excluded_and_audited[Generator Capacity-0-invalid_capacity]"
+    },
+    {
+      "suite": "tests.test_data_validation",
+      "test": "test_bad_channel_day_is_excluded_and_audited[date-value8-invalid_date]"
+    },
+    {
+      "suite": "tests.test_data_validation",
+      "test": "test_all_duplicate_candidates_are_rejected"
+    },
+    {
+      "suite": "tests.test_data_validation",
+      "test": "test_both_dst_transitions_are_excluded[2010-10-03]"
+    },
+    {
+      "suite": "tests.test_data_validation",
+      "test": "test_both_dst_transitions_are_excluded[2011-04-03]"
+    },
+    {
+      "suite": "tests.test_data_validation",
+      "test": "test_absent_controlled_load_is_not_created"
+    },
+    {
+      "suite": "tests.test_data_validation",
+      "test": "test_outside_year_and_metadata_conflicts"
+    },
+    {
+      "suite": "tests.test_data_validation",
+      "test": "test_high_generation_is_warning_not_automatic_deletion"
+    },
+    {
+      "suite": "tests.test_forecasting",
+      "test": "test_weekly_baseline_uses_calendar_date_and_48_outputs"
+    },
+    {
+      "suite": "tests.test_forecasting",
+      "test": "test_actuals_after_issue_time_cannot_change_features"
+    },
+    {
+      "suite": "tests.test_forecasting",
+      "test": "test_previous_day_availability_boundary_and_fallback"
+    },
+    {
+      "suite": "tests.test_forecasting",
+      "test": "test_rolling_mean_has_exactly_seven_past_days"
+    },
+    {
+      "suite": "tests.test_forecasting",
+      "test": "test_missing_calendar_day_does_not_shift_history"
+    },
+    {
+      "suite": "tests.test_forecasting",
+      "test": "test_one_missing_interval_excludes_entire_forecast_day"
+    },
+    {
+      "suite": "tests.test_forecasting",
+      "test": "test_leakage_guard_checks_every_observed_feature[lag_2d_available_at]"
+    },
+    {
+      "suite": "tests.test_forecasting",
+      "test": "test_leakage_guard_checks_every_observed_feature[lag_7d_available_at]"
+    },
+    {
+      "suite": "tests.test_forecasting",
+      "test": "test_leakage_guard_checks_every_observed_feature[rolling_7d_available_at]"
+    },
+    {
+      "suite": "tests.test_forecasting",
+      "test": "test_leakage_guard_checks_every_observed_feature[previous_day_or_2d_available_at]"
+    },
+    {
+      "suite": "tests.test_forecasting",
+      "test": "test_duplicate_history_rejected"
+    },
+    {
+      "suite": "tests.test_forecasting",
+      "test": "test_partition_boundaries_and_reserved_test"
+    },
+    {
+      "suite": "tests.test_forecasting",
+      "test": "test_overlap_rejected"
+    },
+    {
+      "suite": "tests.test_forecasting",
+      "test": "test_quarantined_dst_day_remains_missing_in_lag_window"
+    },
+    {
+      "suite": "tests.test_forecasting",
+      "test": "test_cohort_selection_ignores_validation_and_future_coverage"
+    },
+    {
+      "suite": "tests.test_forecasting",
+      "test": "test_mae_rmse_and_units"
+    },
+    {
+      "suite": "tests.test_forecasting",
+      "test": "test_invalid_metric_inputs_fail[actual0-predicted0]"
+    },
+    {
+      "suite": "tests.test_forecasting",
+      "test": "test_invalid_metric_inputs_fail[actual1-predicted1]"
+    },
+    {
+      "suite": "tests.test_forecasting",
+      "test": "test_invalid_metric_inputs_fail[actual2-predicted2]"
+    },
+    {
+      "suite": "tests.test_forecasting",
+      "test": "test_invalid_metric_inputs_fail[actual3-predicted3]"
+    },
+    {
+      "suite": "tests.test_forecasting",
+      "test": "test_evening_window_uses_start_time_and_ten_intervals"
+    },
+    {
+      "suite": "tests.test_forecasting",
+      "test": "test_community_metrics_require_fixed_complete_cohort"
+    },
+    {
+      "suite": "tests.test_interval_units",
+      "test": "test_energy_power_and_midnight_are_physical"
+    },
+    {
+      "suite": "tests.test_interval_units",
+      "test": "test_summer_timezone"
+    },
+    {
+      "suite": "tests.test_interval_units",
+      "test": "test_conversion_rejects_dst_even_if_validation_skipped"
+    },
+    {
+      "suite": "tests.test_pipeline",
+      "test": "test_pipeline_writes_traceable_outputs_and_real_chart"
+    }
+  ]
+}

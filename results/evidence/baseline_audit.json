@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "predictions_matched_to_original_interval_history": 501120,
+  "feature_rows_with_cutoff_provenance_checked": 1990080,
+  "final_test_predictions": 0,
+  "independent_metric_checks": [
+    {
+      "channel": "GC",
+      "window": "full_day",
+      "mae_kwh": 0.18932516762452106,
+      "rmse_kwh": 0.3668411018485082
+    },
+    {
+      "channel": "GC",
+      "window": "evening_16_21",
+      "mae_kwh": 0.2992966091954023,
+      "rmse_kwh": 0.5034172440713096
+    },
+    {
+      "channel": "GG",
+      "window": "full_day",
+      "mae_kwh": 0.074689691091954,
+      "rmse_kwh": 0.18962489215452916
+    },
+    {
+      "channel": "GG",
+      "window": "evening_16_21",
+      "mae_kwh": 0.03451932950191571,
+      "rmse_kwh": 0.11394137826967134
+    }
+  ]
+}
