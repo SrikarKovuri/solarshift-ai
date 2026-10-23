@@ -1,0 +1,24 @@
+{
+  "status": "estimated",
+  "method": "CodeCarbon offline, assumed CPU TDP and constant RAM power",
+  "country_iso_code": "AUS",
+  "assumed_cpu_tdp_w": 15.0,
+  "assumed_ram_power_w": 3.0,
+  "scope": "All candidate fitting, validation prediction, scoring and model serialization inside the search; excludes data preparation, final report, audits, development and AI assistance.",
+  "limitations": "An estimate, not a wall-meter measurement. Uses bundled country-average electricity intensity, not historical household emissions or a current NSW marginal factor. Other machine activity and embodied emissions are not attributed.",
+  "wall_seconds": 16.32881241571158,
+  "duration": 16.329099582508206,
+  "emissions": 2.6130749739889847e-05,
+  "energy_consumed": 4.762371191832548e-05,
+  "cpu_energy": 3.4017934106911216e-05,
+  "ram_energy": 1.3605777811414253e-05,
+  "gpu_energy": 0.0,
+  "cpu_power": 7.5,
+  "ram_power": 3.0,
+  "cpu_method_note": "CodeCarbon 3.0.7 constant mode uses 50% of the supplied CPU TDP; effective CPU watts are recorded in cpu_power.",
+  "units": {
+    "emissions": "kg CO2e",
+    "energy_consumed": "kWh",
+    "duration": "seconds"
+  }
+}

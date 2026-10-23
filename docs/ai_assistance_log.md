@@ -40,3 +40,18 @@ Codex drafted feature construction, leakage/partition tests, persistence evaluat
 an independent source-join audit, charts and documentation; commands were executed
 and their outputs retained. No human review or teammate authorship is asserted.
 The conversation retains the exact request and generated changes for the appendix.
+
+## Supervised forecasting increment — 23 October 2026
+
+The user requested completion of the next modelling stage. Existing commit/push
+authorisation continues. Codex implemented the bounded demand/PV XGBoost search,
+serialization and inference, baseline comparisons, diagnostics, offline training
+carbon estimation, independent audit and tests. Codex installed pinned Python
+dependencies and the Mac OpenMP runtime, trained real-data models, checked the
+reports in a browser and updated documentation/evidence.
+
+The recorded 14.75% evening-demand validation improvement misses the proposal's
+15% goal; this outcome is retained without changing the benchmark. Validation was
+used for selection and no final-test results or pricing benefits are claimed.
+Human review and teammate contributions are still unverified. This conversation
+and the actual development commits should be retained for the assessment appendix.

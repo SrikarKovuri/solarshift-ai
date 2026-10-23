@@ -51,7 +51,8 @@ sample. Selection is fixed before validation errors are computed.
 
 The builder verifies source hashes, reads no final-test annual interval file,
 filters development observations by date and writes train/validation features only.
-No preprocessing parameters or model hyperparameters have been fitted. The final
+No fitted preprocessing is required. XGBoost hyperparameters are selected using
+validation only, as documented in [modelling methodology](modelling.md). The final
 test partition is defined and reserved for the later frozen-method evaluation.
 
 ## Baseline and metrics
@@ -74,4 +75,5 @@ not averages of household errors. Full-day PV errors include night-time zeros.
 The saved validation predictions are independently joined to source target and
 lag observations, and pooled metrics are independently recomputed. Missing
 required histories are not imputed or shifted by row position. No demand-response,
-tariff, XGBoost performance or causal claim follows from this baseline benchmark.
+tariff or causal claim follows from this baseline benchmark. Measured XGBoost
+validation comparisons now appear in the separate model report and modelling notes.

@@ -1,0 +1,11 @@
+{
+  "generated_at_utc": "2026-10-23T03:32:11.304572+00:00",
+  "command": ".venv/bin/python -m pytest -q --junitxml=results/evidence/model_tests.xml",
+  "package_version": "0.3.0",
+  "tests": 68,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "seconds": 2.747,
+  "installed_package_verified": true
+}

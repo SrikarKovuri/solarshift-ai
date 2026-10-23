@@ -22,8 +22,19 @@ development datasets. `models/persistence.py` predicts the seven-day lag.
 `evaluation/metrics.py` defines physical-unit metrics and complete-cohort aggregation;
 `evaluation/baseline.py` verifies feature hashes and evaluates validation only.
 
-Two XGBoost targets, transparent pricing, constrained response, SHAP and the
-Streamlit interface remain future work.
+Supervised forecasting:
+
+`verified development features → bounded two-target CPU search → validation selection → native model files → reload and compare → day forecast / diagnostic report`
+
+`models/boosted.py` checks inputs, feature order, model hashes and forecast days.
+`models/train.py` fits three configurations for each target with training-only rows;
+`models/tracking.py` records the search's offline carbon estimate. `evaluation/boosted.py`
+reproduces forecasts and checks exact baseline eligibility before reporting metrics.
+`models/forecast.py` produces 48 half-hours per target for a supported validation day.
+`scripts/verify_models.py` independently verifies source joins, metrics and repeat fits.
+
+Transparent pricing, constrained response, SHAP and the Streamlit interface remain
+future work. The model report is a usable research artefact, not the finished app.
 
 ## Interval schema
 

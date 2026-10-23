@@ -1,0 +1,169 @@
+{
+  "status": "passed",
+  "validation_rows_matched_to_sources_and_baseline": 501120,
+  "test_predictions": 0,
+  "refits": [
+    {
+      "channel": "GC",
+      "training_rows": 744480,
+      "validation_rows": 250560,
+      "repeat_fit_exact_prediction_match": true,
+      "bare_booster_reload_exact_match": true
+    },
+    {
+      "channel": "GG",
+      "training_rows": 744480,
+      "validation_rows": 250560,
+      "repeat_fit_exact_prediction_match": true,
+      "bare_booster_reload_exact_match": true
+    }
+  ],
+  "independent_metric_checks": [
+    {
+      "model": "weekly_persistence",
+      "scope": "household_interval_weighted",
+      "channel": "GC",
+      "window": "full_day",
+      "n": 250560,
+      "mae_kwh": 0.18932516762452106,
+      "rmse_kwh": 0.36684110184850854
+    },
+    {
+      "model": "weekly_persistence",
+      "scope": "household_interval_weighted",
+      "channel": "GC",
+      "window": "evening_16_21",
+      "n": 52200,
+      "mae_kwh": 0.2992966091954023,
+      "rmse_kwh": 0.5034172440713095
+    },
+    {
+      "model": "weekly_persistence",
+      "scope": "household_interval_weighted",
+      "channel": "GG",
+      "window": "full_day",
+      "n": 250560,
+      "mae_kwh": 0.074689691091954,
+      "rmse_kwh": 0.18962489215452927
+    },
+    {
+      "model": "weekly_persistence",
+      "scope": "household_interval_weighted",
+      "channel": "GG",
+      "window": "evening_16_21",
+      "n": 52200,
+      "mae_kwh": 0.03451932950191571,
+      "rmse_kwh": 0.11394137826967135
+    },
+    {
+      "model": "weekly_persistence",
+      "scope": "complete_cohort_sum",
+      "channel": "GC",
+      "window": "full_day",
+      "n": 8352,
+      "mae_kwh": 1.7780150862068966,
+      "rmse_kwh": 2.7132011930266056
+    },
+    {
+      "model": "weekly_persistence",
+      "scope": "complete_cohort_sum",
+      "channel": "GC",
+      "window": "evening_16_21",
+      "n": 1740,
+      "mae_kwh": 2.7370408045977017,
+      "rmse_kwh": 3.8202397056494624
+    },
+    {
+      "model": "weekly_persistence",
+      "scope": "complete_cohort_sum",
+      "channel": "GG",
+      "window": "full_day",
+      "n": 8352,
+      "mae_kwh": 1.842032686781609,
+      "rmse_kwh": 3.90716255953636
+    },
+    {
+      "model": "weekly_persistence",
+      "scope": "complete_cohort_sum",
+      "channel": "GG",
+      "window": "evening_16_21",
+      "n": 1740,
+      "mae_kwh": 0.8191155172413793,
+      "rmse_kwh": 1.9324894457786765
+    },
+    {
+      "model": "xgboost",
+      "scope": "household_interval_weighted",
+      "channel": "GC",
+      "window": "full_day",
+      "n": 250560,
+      "mae_kwh": 0.16058268284037303,
+      "rmse_kwh": 0.27941360862428594
+    },
+    {
+      "model": "xgboost",
+      "scope": "household_interval_weighted",
+      "channel": "GC",
+      "window": "evening_16_21",
+      "n": 52200,
+      "mae_kwh": 0.2551542740214676,
+      "rmse_kwh": 0.38632561493342227
+    },
+    {
+      "model": "xgboost",
+      "scope": "household_interval_weighted",
+      "channel": "GG",
+      "window": "full_day",
+      "n": 250560,
+      "mae_kwh": 0.05667696497348415,
+      "rmse_kwh": 0.1317689510505921
+    },
+    {
+      "model": "xgboost",
+      "scope": "household_interval_weighted",
+      "channel": "GG",
+      "window": "evening_16_21",
+      "n": 52200,
+      "mae_kwh": 0.025969578371212384,
+      "rmse_kwh": 0.0811465023302812
+    },
+    {
+      "model": "xgboost",
+      "scope": "complete_cohort_sum",
+      "channel": "GC",
+      "window": "full_day",
+      "n": 8352,
+      "mae_kwh": 1.5221249308483462,
+      "rmse_kwh": 2.1327934898947363
+    },
+    {
+      "model": "xgboost",
+      "scope": "complete_cohort_sum",
+      "channel": "GC",
+      "window": "evening_16_21",
+      "n": 1740,
+      "mae_kwh": 2.359307817918045,
+      "rmse_kwh": 3.0364830225436292
+    },
+    {
+      "model": "xgboost",
+      "scope": "complete_cohort_sum",
+      "channel": "GG",
+      "window": "full_day",
+      "n": 8352,
+      "mae_kwh": 1.3377592879784044,
+      "rmse_kwh": 2.6374519069071356
+    },
+    {
+      "model": "xgboost",
+      "scope": "complete_cohort_sum",
+      "channel": "GG",
+      "window": "evening_16_21",
+      "n": 1740,
+      "mae_kwh": 0.5910684838817815,
+      "rmse_kwh": 1.3459002468576173
+    }
+  ],
+  "household_metric_rows_checked": 240,
+  "note": "Audit refits are outside the recorded search carbon estimate."
+}

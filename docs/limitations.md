@@ -17,8 +17,16 @@
 - No customer elasticity, appliance constraints, network topology or demographic
   ground truth is available. Later simulation must state these assumptions.
 - No software redistribution licence has been chosen by the team.
-- Baseline reports are not a finished application; learned models and simulation remain pending.
+- Trained models and reports are operational; the integrated application and simulation remain pending.
 - Observation availability is an assumed 30-minute delay, not a verified historical
   live smart-meter service. Longer-delay scenarios need separate evaluation.
 - The baseline uses a seeded 30-household pilot. Generalisation beyond this cohort
   is untested; strict history completeness removes forecast days.
+- Model validation was used for selection, so it is not unbiased final-test evidence.
+  The demand evening improvement of 14.75% misses the 15% target; no final-test
+  improvement, causal benefit or simulated savings are established.
+- Models pool households without identity features. Weather, occupancy, appliance
+  state and current household characteristics are unavailable; PV errors include
+  night-time zeros. Small positive night-time PV forecasts may occur.
+- Training carbon is estimated from assumed power and country-average intensity.
+  It excludes development, AI assistance, data preparation and audit repeat fits.

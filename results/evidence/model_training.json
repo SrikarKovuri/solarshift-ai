@@ -1,0 +1,412 @@
+{
+  "generated_at_utc": "2026-10-23T03:25:29.533540+00:00",
+  "partition": "validation",
+  "test_evaluated": false,
+  "cohort": [
+    3,
+    8,
+    22,
+    23,
+    24,
+    40,
+    60,
+    61,
+    89,
+    91,
+    110,
+    119,
+    128,
+    129,
+    151,
+    175,
+    176,
+    187,
+    200,
+    206,
+    207,
+    222,
+    229,
+    241,
+    250,
+    256,
+    276,
+    282,
+    287,
+    289
+  ],
+  "versions": {
+    "xgboost": "3.0.5",
+    "numpy": "2.2.6",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.6.1",
+    "codecarbon": "3.0.7",
+    "python": "3.12.14"
+  },
+  "config_sha256": "14025bbd76594c382a763e0a1774f7ed8080de9cc8d2091ad48a28e7f74a05b6",
+  "feature_manifest_sha256": "099d4aaac2e6799dc9adb80b5df8cc76bcd691867f1d37b6b6487b6d07311b5f",
+  "selection_policy": "GC evening MAE; GG full-day MAE; ties retain first candidate. Validation is used for selection and is not an unbiased final-test estimate.",
+  "selected": {
+    "GC": {
+      "channel": "GC",
+      "feature_columns": [
+        "slot",
+        "weekday",
+        "weekend",
+        "month",
+        "season",
+        "slot_sin",
+        "slot_cos",
+        "weekday_sin",
+        "weekday_cos",
+        "month_sin",
+        "month_cos",
+        "capacity_kwp",
+        "lag_2d_kwh",
+        "lag_7d_kwh",
+        "rolling_7d_kwh",
+        "previous_day_or_2d_kwh",
+        "previous_day_available"
+      ],
+      "prediction_policy": "clip_lower_zero",
+      "threads": 4,
+      "feature_manifest_sha256": "099d4aaac2e6799dc9adb80b5df8cc76bcd691867f1d37b6b6487b6d07311b5f",
+      "model_sha256": "8164a5f276369e45d47f521200851e2b2db0dad57fb364add5146cb7c530bf0a",
+      "seed": 2112,
+      "versions": {
+        "xgboost": "3.0.5",
+        "numpy": "2.2.6",
+        "pandas": "2.2.3",
+        "scikit-learn": "1.6.1",
+        "codecarbon": "3.0.7",
+        "python": "3.12.14"
+      },
+      "selected": {
+        "channel": "GC",
+        "candidate": "shallow",
+        "parameters": {
+          "name": "shallow",
+          "n_estimators": 200,
+          "max_depth": 3,
+          "learning_rate": 0.05,
+          "subsample": 0.8,
+          "colsample_bytree": 0.9,
+          "min_child_weight": 10,
+          "reg_lambda": 10.0
+        },
+        "selection_window": "evening_16_21",
+        "selection_mae_kwh": 0.2551542740214676,
+        "train_rows": 744480,
+        "validation_rows": 250560,
+        "fit_predict_seconds": 1.397011624649167,
+        "metrics": {
+          "full_day": {
+            "n": 250560,
+            "mae_kwh": 0.16058268284037303,
+            "rmse_kwh": 0.27941360862428594
+          },
+          "evening_16_21": {
+            "n": 52200,
+            "mae_kwh": 0.2551542740214676,
+            "rmse_kwh": 0.38632561493342227
+          }
+        }
+      },
+      "training_dates": [
+        "2010-07-09",
+        "2011-12-31"
+      ],
+      "validation_dates": [
+        "2012-01-01",
+        "2012-06-30"
+      ],
+      "test_evaluated": false
+    },
+    "GG": {
+      "channel": "GG",
+      "feature_columns": [
+        "slot",
+        "weekday",
+        "weekend",
+        "month",
+        "season",
+        "slot_sin",
+        "slot_cos",
+        "weekday_sin",
+        "weekday_cos",
+        "month_sin",
+        "month_cos",
+        "capacity_kwp",
+        "lag_2d_kwh",
+        "lag_7d_kwh",
+        "rolling_7d_kwh",
+        "previous_day_or_2d_kwh",
+        "previous_day_available"
+      ],
+      "prediction_policy": "clip_lower_zero",
+      "threads": 4,
+      "feature_manifest_sha256": "099d4aaac2e6799dc9adb80b5df8cc76bcd691867f1d37b6b6487b6d07311b5f",
+      "model_sha256": "44db4e8370fc607a39a617ceb1e8b974e3624810f972327e3fc634f7635c4e6a",
+      "seed": 2112,
+      "versions": {
+        "xgboost": "3.0.5",
+        "numpy": "2.2.6",
+        "pandas": "2.2.3",
+        "scikit-learn": "1.6.1",
+        "codecarbon": "3.0.7",
+        "python": "3.12.14"
+      },
+      "selected": {
+        "channel": "GG",
+        "candidate": "shallow",
+        "parameters": {
+          "name": "shallow",
+          "n_estimators": 200,
+          "max_depth": 3,
+          "learning_rate": 0.05,
+          "subsample": 0.8,
+          "colsample_bytree": 0.9,
+          "min_child_weight": 10,
+          "reg_lambda": 10.0
+        },
+        "selection_window": "full_day",
+        "selection_mae_kwh": 0.05667696497348415,
+        "train_rows": 744480,
+        "validation_rows": 250560,
+        "fit_predict_seconds": 1.8708647079765797,
+        "metrics": {
+          "full_day": {
+            "n": 250560,
+            "mae_kwh": 0.05667696497348415,
+            "rmse_kwh": 0.1317689510505921
+          },
+          "evening_16_21": {
+            "n": 52200,
+            "mae_kwh": 0.025969578371212384,
+            "rmse_kwh": 0.0811465023302812
+          }
+        }
+      },
+      "training_dates": [
+        "2010-07-09",
+        "2011-12-31"
+      ],
+      "validation_dates": [
+        "2012-01-01",
+        "2012-06-30"
+      ],
+      "test_evaluated": false
+    }
+  },
+  "candidates": [
+    {
+      "channel": "GC",
+      "candidate": "shallow",
+      "parameters": {
+        "name": "shallow",
+        "n_estimators": 200,
+        "max_depth": 3,
+        "learning_rate": 0.05,
+        "subsample": 0.8,
+        "colsample_bytree": 0.9,
+        "min_child_weight": 10,
+        "reg_lambda": 10.0
+      },
+      "selection_window": "evening_16_21",
+      "selection_mae_kwh": 0.2551542740214676,
+      "train_rows": 744480,
+      "validation_rows": 250560,
+      "fit_predict_seconds": 1.397011624649167,
+      "metrics": {
+        "full_day": {
+          "n": 250560,
+          "mae_kwh": 0.16058268284037303,
+          "rmse_kwh": 0.27941360862428594
+        },
+        "evening_16_21": {
+          "n": 52200,
+          "mae_kwh": 0.2551542740214676,
+          "rmse_kwh": 0.38632561493342227
+        }
+      }
+    },
+    {
+      "channel": "GC",
+      "candidate": "medium",
+      "parameters": {
+        "name": "medium",
+        "n_estimators": 300,
+        "max_depth": 5,
+        "learning_rate": 0.05,
+        "subsample": 0.8,
+        "colsample_bytree": 0.9,
+        "min_child_weight": 10,
+        "reg_lambda": 10.0
+      },
+      "selection_window": "evening_16_21",
+      "selection_mae_kwh": 0.2575766811323711,
+      "train_rows": 744480,
+      "validation_rows": 250560,
+      "fit_predict_seconds": 2.634977334178984,
+      "metrics": {
+        "full_day": {
+          "n": 250560,
+          "mae_kwh": 0.16192995528556092,
+          "rmse_kwh": 0.27890250109987696
+        },
+        "evening_16_21": {
+          "n": 52200,
+          "mae_kwh": 0.2575766811323711,
+          "rmse_kwh": 0.3857577028153796
+        }
+      }
+    },
+    {
+      "channel": "GC",
+      "candidate": "deeper",
+      "parameters": {
+        "name": "deeper",
+        "n_estimators": 400,
+        "max_depth": 6,
+        "learning_rate": 0.05,
+        "subsample": 0.8,
+        "colsample_bytree": 0.9,
+        "min_child_weight": 10,
+        "reg_lambda": 10.0
+      },
+      "selection_window": "evening_16_21",
+      "selection_mae_kwh": 0.2588296659628393,
+      "train_rows": 744480,
+      "validation_rows": 250560,
+      "fit_predict_seconds": 3.738187415525317,
+      "metrics": {
+        "full_day": {
+          "n": 250560,
+          "mae_kwh": 0.16254779610229828,
+          "rmse_kwh": 0.2789997439673397
+        },
+        "evening_16_21": {
+          "n": 52200,
+          "mae_kwh": 0.2588296659628393,
+          "rmse_kwh": 0.38612354456423503
+        }
+      }
+    },
+    {
+      "channel": "GG",
+      "candidate": "shallow",
+      "parameters": {
+        "name": "shallow",
+        "n_estimators": 200,
+        "max_depth": 3,
+        "learning_rate": 0.05,
+        "subsample": 0.8,
+        "colsample_bytree": 0.9,
+        "min_child_weight": 10,
+        "reg_lambda": 10.0
+      },
+      "selection_window": "full_day",
+      "selection_mae_kwh": 0.05667696497348415,
+      "train_rows": 744480,
+      "validation_rows": 250560,
+      "fit_predict_seconds": 1.8708647079765797,
+      "metrics": {
+        "full_day": {
+          "n": 250560,
+          "mae_kwh": 0.05667696497348415,
+          "rmse_kwh": 0.1317689510505921
+        },
+        "evening_16_21": {
+          "n": 52200,
+          "mae_kwh": 0.025969578371212384,
+          "rmse_kwh": 0.0811465023302812
+        }
+      }
+    },
+    {
+      "channel": "GG",
+      "candidate": "medium",
+      "parameters": {
+        "name": "medium",
+        "n_estimators": 300,
+        "max_depth": 5,
+        "learning_rate": 0.05,
+        "subsample": 0.8,
+        "colsample_bytree": 0.9,
+        "min_child_weight": 10,
+        "reg_lambda": 10.0
+      },
+      "selection_window": "full_day",
+      "selection_mae_kwh": 0.05672943285296343,
+      "train_rows": 744480,
+      "validation_rows": 250560,
+      "fit_predict_seconds": 2.439033250324428,
+      "metrics": {
+        "full_day": {
+          "n": 250560,
+          "mae_kwh": 0.05672943285296343,
+          "rmse_kwh": 0.13220254674649623
+        },
+        "evening_16_21": {
+          "n": 52200,
+          "mae_kwh": 0.0259023808616229,
+          "rmse_kwh": 0.08082997793129847
+        }
+      }
+    },
+    {
+      "channel": "GG",
+      "candidate": "deeper",
+      "parameters": {
+        "name": "deeper",
+        "n_estimators": 400,
+        "max_depth": 6,
+        "learning_rate": 0.05,
+        "subsample": 0.8,
+        "colsample_bytree": 0.9,
+        "min_child_weight": 10,
+        "reg_lambda": 10.0
+      },
+      "selection_window": "full_day",
+      "selection_mae_kwh": 0.057083720824584586,
+      "train_rows": 744480,
+      "validation_rows": 250560,
+      "fit_predict_seconds": 3.223397083580494,
+      "metrics": {
+        "full_day": {
+          "n": 250560,
+          "mae_kwh": 0.057083720824584586,
+          "rmse_kwh": 0.1339878179905178
+        },
+        "evening_16_21": {
+          "n": 52200,
+          "mae_kwh": 0.025896464657451393,
+          "rmse_kwh": 0.0812170457289798
+        }
+      }
+    }
+  ],
+  "carbon": {
+    "status": "estimated",
+    "method": "CodeCarbon offline, assumed CPU TDP and constant RAM power",
+    "country_iso_code": "AUS",
+    "assumed_cpu_tdp_w": 15.0,
+    "assumed_ram_power_w": 3.0,
+    "scope": "All candidate fitting, validation prediction, scoring and model serialization inside the search; excludes data preparation, final report, audits, development and AI assistance.",
+    "limitations": "An estimate, not a wall-meter measurement. Uses bundled country-average electricity intensity, not historical household emissions or a current NSW marginal factor. Other machine activity and embodied emissions are not attributed.",
+    "wall_seconds": 16.32881241571158,
+    "duration": 16.329099582508206,
+    "emissions": 2.6130749739889847e-05,
+    "energy_consumed": 4.762371191832548e-05,
+    "cpu_energy": 3.4017934106911216e-05,
+    "ram_energy": 1.3605777811414253e-05,
+    "gpu_energy": 0.0,
+    "cpu_power": 7.5,
+    "ram_power": 3.0,
+    "cpu_method_note": "CodeCarbon 3.0.7 constant mode uses 50% of the supplied CPU TDP; effective CPU watts are recorded in cpu_power.",
+    "units": {
+      "emissions": "kg CO2e",
+      "energy_consumed": "kWh",
+      "duration": "seconds"
+    }
+  }
+}

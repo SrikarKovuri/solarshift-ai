@@ -120,3 +120,73 @@ yet complete; the remaining work follows the agreed staged plan.
 Train and validate separate demand/PV XGBoost models on this fixed benchmark,
 with reproducible persistence and training-carbon instrumentation. This work has
 not begun. Human team review remains pending; AI assistance is recorded separately.
+
+## Trained forecasts and validation diagnostics — 23 October 2026 (Australia/Sydney)
+
+The user requested completion of the supervised modelling milestone. This entry
+uses the actual client date, not the original roadmap's projected calendar date.
+
+### Delivered
+
+- Separate pooled GC/GG XGBoost models using the existing 17-feature allowlist.
+- Prespecified three-candidate CPU search per target; seed 2112, four threads.
+- GC selected by evening MAE; GG by full-day MAE. Both selected depth 3 / 200 trees.
+- Native UBJSON models, hash-checked metadata and exact baseline-mask comparison.
+- Reloadable 48-slot forecasts per target, selectable by supported household/date.
+- Offline reports with observed/persistence/model traces, time and household errors,
+  residual distributions and full-day/evening pooled/community metrics.
+- Offline CodeCarbon search estimate with explicit CPU/RAM assumptions and scope.
+- Updated package 0.3.0, dependency lock and Mac OpenMP setup instructions.
+
+### Measured results
+
+501,120 validation predictions cover the same fixed 30-household pilot and 174
+eligible dates per target as the persistence benchmark. Model fitting uses
+744,480 training rows per target. No final-test feature files or observations are
+loaded or evaluated by this milestone's model pipeline.
+
+| Target/window | Baseline MAE | XGBoost MAE | MAE improvement |
+|---|---:|---:|---:|
+| GC full day | 0.189325 | 0.160583 | 15.181545% |
+| GC evening | 0.299297 | 0.255154 | 14.748692% |
+| GG full day | 0.074690 | 0.056677 | 24.116750% |
+| GG evening | 0.034519 | 0.025970 | 24.768010% |
+
+Errors are kWh per half-hour. Evening demand misses the 15% ambition by about
+0.25 percentage points. Both larger candidates perform worse on their respective
+selection metric; no further search was introduced to force the target. Validation
+was used for selection and these improvements are not final-test evidence.
+
+### Executed verification and issues resolved
+
+The independent audit joins all 501,120 actuals and weekly lags to development
+source intervals, recomputes all 16 pooled/community metric rows and 240 household
+metric rows, reloads native Boosters, and repeats both winning fits. Both refits and
+reloads reproduce the complete real validation predictions exactly.
+
+The final automated test count is recorded in `results/evidence/model_tests.json`.
+Tests exercise chronological partition checks, leakage provenance, wrong targets,
+file tampering, complete 48-slot days, target-independent inputs, deterministic fits,
+physical clipping, selection, serialization, carbon failures and end-to-end forecasts.
+
+The initial XGBoost import failed because the Mac lacked OpenMP; `libomp` was
+installed and the package imports/trains successfully. A synthetic serialization
+test exposed base-score float32 rounding of about 1.2e-7 kWh. The reload invariant
+uses an absolute 1e-6 kWh tolerance; real selected-model reloads still match exactly.
+CodeCarbon's forced CPU parameter was confirmed to be TDP, with a 50% constant-mode
+factor: 15 W input yields 7.5 W effective CPU power, plus assumed 3 W RAM. This is
+an estimate, not hardware measurement. Compact final-run values and exclusions are
+in `results/evidence/model_carbon.json`; audit refits and earlier development runs
+are outside the saved search estimate.
+
+The report and a household/date chart were inspected in the browser, including
+horizontal access to solar panels in a narrow viewport. Generated data/models stay
+local and ignored by Git; configuration, code and compact evidence are committed.
+
+### Next increment
+
+Transparent pricing and constrained response simulation are next. The integrated
+Streamlit application, SHAP and final frozen-method test evaluation remain later
+work. Human team review remains pending; no teammate authorship is asserted.
+
+Commit purpose: `feat(ml): implement and evaluate XGBoost forecasting`.

@@ -3,10 +3,11 @@
 An ENGG2112 offline research prototype investigating whether household demand and
 PV forecasts can inform transparent pricing and simulated evening load shifting.
 
-**Current increment: forecast-ready features and a measured weekly persistence benchmark.**
-Real-data ingestion, temporal feature checks and validation evaluation are operational.
-XGBoost, pricing, response simulation, SHAP and the Streamlit application remain
-future work. Baseline errors are measured; no model improvement or energy saving is claimed.
+**Current increment: trained demand/PV XGBoost models and reproducible validation.**
+Real-data ingestion, cutoff-aware features, weekly persistence, CPU model training,
+saved-model forecasts and interactive error reports work locally. Pricing, response
+simulation, SHAP and the integrated Streamlit application remain future work.
+Validation improvements are measured; no final-test performance or energy saving is claimed.
 
 Repository: https://github.com/SrikarKovuri/solarshift-ai
 
@@ -15,6 +16,9 @@ Repository: https://github.com/SrikarKovuri/solarshift-ai
 Python 3.11–3.13 is permitted by the package; the verified environment is
 Python 3.12 on Apple Silicon. Other environments require their own verification.
 From this repository directory:
+
+On macOS, first install the OpenMP runtime with `brew install libomp`.
+Linux needs its distribution's OpenMP runtime (`libgomp1` on Debian/Ubuntu).
 
 ```bash
 python3 -m venv .venv
@@ -148,12 +152,65 @@ These counts describe the current data/configuration, not hard-coded targets.
 These are interval-weighted household errors. Community-sum errors are separate
 in the report and require the complete fixed cohort. Night-time PV zeros can make
 full-day PV errors appear small; these results are not a daylight-only assessment.
-Later XGBoost comparisons must use exactly the same eligibility masks.
+The XGBoost comparison verifies exactly the same eligibility masks and target values.
 
 Outputs: `data/features/manifest.json`, per-household/target feature Parquet files,
 `excluded_forecast_days.csv`, and `results/generated/baseline/` containing predictions,
 metrics, household scores, coverage and the HTML report. Compact evidence is
 committed under `results/evidence/baseline_*`; large generated files are ignored.
+
+## Train, evaluate and generate forecasts
+
+After building features and running the persistence benchmark:
+
+```bash
+python -m solarshift.models.train --config configs/models.toml
+python -m solarshift.evaluation.boosted --config configs/models.toml
+python scripts/verify_models.py
+python -m solarshift.models.forecast --list
+python -m solarshift.models.forecast --customer 3 --date 2012-01-01
+```
+
+Training fits three prespecified CPU configurations per target. Demand selection
+minimises evening MAE; PV selection minimises full-day MAE. Both selected the shallow
+200-tree model. Models train on July 2010–December 2011 only; January–June 2012 is
+used for selection and comparison, so these are **validation, not final-test results**.
+The final test year remains reserved. Negative predictions are clipped to zero;
+targets are unchanged and no observed-weather inputs are used.
+
+| Target | Window | Baseline MAE | XGBoost MAE | MAE reduction | XGBoost RMSE |
+|---|---|---:|---:|---:|---:|
+| Demand (GC) | Full day | 0.189325 | 0.160583 | 15.18% | 0.279414 |
+| Demand (GC) | 16:00–21:00 | 0.299297 | 0.255154 | **14.75%** | 0.386326 |
+| Solar (GG) | Full day | 0.074690 | 0.056677 | 24.12% | 0.131769 |
+| Solar (GG) | 16:00–21:00 | 0.034519 | 0.025970 | 24.77% | 0.081147 |
+
+MAE/RMSE units are kWh per half-hour. Demand's evening improvement falls **0.25
+percentage points short** of the aspirational 15% target. Larger tested models
+performed worse on the selection metric. The report retains all candidate results;
+the cohort, exclusions and baseline were not changed to improve these numbers.
+
+Open `results/generated/xgboost/model_report.html` for observed/baseline/model
+charts, residual distributions, household and time-of-day errors, and community
+metrics. The forecast command generates **48 numeric values per target** for the
+selected supported validation day, plus a CSV, JSON metrics and an offline chart in
+`results/generated/xgboost/forecasts/`. Use `--list --customer 3` to see eligible dates.
+
+Each target's native UBJSON model and metadata live in
+`results/generated/xgboost/{GC,GG}/`. Evaluation reloads these files, checks hashes
+and feature order, and matches the persistence benchmark row for row. The independent
+audit checks source readings, every pooled/community metric, all household metrics,
+bare-Booster inference and fresh deterministic fits of the selected configurations.
+
+CodeCarbon records an offline **estimate** for the search in `carbon.json`. The
+default assumption is 15 W CPU TDP (CodeCarbon uses 7.5 W) plus 3 W RAM; it uses a
+bundled Australian country-average carbon factor. This is not measured wall power.
+Data preparation, audits/refits, software development and AI assistance are outside
+that estimate. All raw generated outputs stay local; compact evidence is committed
+under `results/evidence/model_*`. Rerunning training replaces the current local
+experiment; copy its folder first if you need to retain an earlier run.
+
+See [model methodology](docs/modelling.md) for selection, reproduction and limitations.
 
 ## Interpretation
 
@@ -180,6 +237,10 @@ Read [methodology](docs/methodology.md), [limitations](docs/limitations.md),
 - **No accepted readings:** inspect exclusions and try another household/date.
 - **Metadata inconsistency:** processing stops rather than silently changing
   customer capacity or location. Investigate source records before proceeding.
+- **XGBoost cannot load `libomp.dylib`:** run `brew install libomp` on macOS.
+- **Model/features/configuration mismatch:** rebuild changed features, rerun the
+  persistence benchmark and then train; do not edit hashes to bypass checks.
+- **Unsupported forecast day:** use `--list`; missing-history and DST exclusions apply.
 - **Dependency installation:** use a fresh environment and supported Python;
   report the actual installation error rather than skipping required packages.
 
@@ -191,8 +252,8 @@ already performed. Actual AI assistance and human verification are recorded in
 [the assistance log](docs/ai_assistance_log.md).
 
 Development proceeds through separately reviewed functional increments.
-Commit dates and the development log reflect actual work. Model training starts
-only when the next increment is requested.
+Commit dates and the development log reflect actual work. The next increment is
+pricing and response simulation, started only when requested.
 
 ## Source and software rights
 
