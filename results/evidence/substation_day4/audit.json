@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "validation_rows": 848089,
+  "model_reload_sample_rows": 10097,
+  "complete_site_days": 15062,
+  "example_site": "Aberdeen 66_11kV",
+  "example_date": "2023-05-01",
+  "checks": [
+    "source actuals",
+    "calendar-day persistence",
+    "MW inverse scale",
+    "quantile reload",
+    "common eligible metrics",
+    "issue-time bounds",
+    "30-minute intervals",
+    "complete replay interface"
+  ],
+  "artifact_hashes": {
+    "summary.json": "b0cd9fe053c100182ac79dcc294b46b2cb86700af1d2af32421eb3b378528a8f",
+    "q90.ubj": "ca5ae9cc10d3d890d671e5a50c386f3954707d615e77d33ed7fd79f179e5be6e",
+    "peak_thresholds_training.csv": "b1cb639311d35534630423d6be80581228870102caa2fa61c5720d100b4f6f73",
+    "q50.ubj": "f5df00f6d446e3ecada846a2c2cdd032079581f5371bb11a72c246e89d0c25f4",
+    "features_development.parquet": "a5fd76b0d52f7a7f2f66a3897bbe92a0c99b99a20b85035cc10d74414011760b",
+    "source_manifest.json": "dad5add3b37c39ab21f2c4913176650b517f85a98beedcf948b2e094f802527e",
+    "ridge.json": "07ad2872adfb664469b46c89143b12c1ce5111f8b019fe16c5fd090328467f0c",
+    "validation_forecasts.parquet": "6c35a49f3551349714f7c8a22b0d78536e8f994c118b2157bbae473540189a16",
+    "metrics.csv": "cbd3615539b6cfd79dceef2a6a7859690a65dbf6618917c4b045cd01679d071c",
+    "clustering.json": "ff17f8252457196c55fb0ce5543953d1b4ec42bd47748261bd1e4ea8aa0547f9",
+    "eligibility.csv": "c71710384a0b67d3812894c3f9f2d6c45eb6eb804fd36a7d7ce996f0686fe295",
+    "anomaly_days.parquet": "e2a06ad8a4fded30406be5baf61927025112c4b1183005a0b5beb5af1267bbd5",
+    "cohort.csv": "3bdecb905de88724bc49b4d408900c887a11c6ac1ff1297276d1b10006c73e70",
+    "q10.ubj": "2a21570641c40a6ca60798c252889a06169547a722bcf5fc5c4a67a394be6d4e",
+    "clean_development.parquet": "1580bbb2c4665bc28c4d41313eb6371da95f47782de14692a99986cd59717d76",
+    "training_cleaning_scales.csv": "5d5f3e1cb198c4f2ae7342c01b5fc7b0d418a9ee25549de6ad5f035d8849c122",
+    "sign_audit.csv": "e228a568e94ab8bc0ed915970befe65c98f47783f1c4b9e84ff68424daf9ac5a"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "complete_site_days": 6569,
+  "sweep_cases": 96,
+  "sweep_site_day_runs": 630624,
+  "independent_max_energy_error_mwh": 1.4210854715202004e-14,
+  "examples": [
+    {
+      "site": "Aberdeen 66_11kV",
+      "date": "2023-11-01",
+      "moved_mwh": 0.0
+    },
+    {
+      "site": "Aberdeen 66_11kV",
+      "date": "2023-11-12",
+      "moved_mwh": 0.0812480943801233
+    }
+  ],
+  "checks": [
+    "input hashes",
+    "chronological calibration",
+    "Brier and confusion counts",
+    "source signed flows",
+    "MW to MWh conservation",
+    "equal destination energy",
+    "positive-import removal bound",
+    "destination headroom",
+    "unaffected intervals",
+    "exempt price",
+    "zero-response sweep",
+    "replay API"
+  ],
+  "artifact_hashes": {
+    "summary.json": "5f47e9ab452177f1aee46edda1ae19322142f10ceb0e5e9fe3dd4e68ed1729c9",
+    "default_scenarios.csv": "eed3868f2fdd793f54e6a16a08a404e5007c2dac60e588a7f33e66601f85220b",
+    "daily_warnings.csv": "20a9ef87adf3308d978db2792b10db1b2c3dbf33372f8dbae03b42f723489af8",
+    "reliability.csv": "2964a526af68e869fa7e3e94d5246bd21ab4ba751c7d66fafb650dbaed9935ab",
+    "calibration.json": "dcc511e74be6171fd56ebe5846e7675040f22d3d8bffba1ff87b7264d8e843ae",
+    "warning_metrics.csv": "de39766f2d086ca85a725988afae686bc9a9e703640b8b1ed5cdc1e2790618ba",
+    "default_curves.parquet": "68a8169ffa2efa35d58ace4e822fd83753ed2d05d92751770e0b7f46caa58062",
+    "scenario_capacity.csv": "88590133e38e0e8215a742a2a1b5a036cadf03eb0a1c1fc5c4f68fbae9646bd5",
+    "sensitivity.csv": "c6b0ce63ddebfa6d851016bf6add1e12ed6c06116965ffccc073516146073a32"
+  }
+}

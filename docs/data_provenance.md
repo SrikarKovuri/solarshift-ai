@@ -1,5 +1,8 @@
 # Data provenance
 
+This document describes the archived household experiment. For the active
+substation prototype, see [Day 4 integration](substation_day4.md).
+
 ## Source chain
 
 Original publisher: Ausgrid, Solar Home Electricity Data, July 2010–June 2013.

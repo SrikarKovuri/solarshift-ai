@@ -1,0 +1,127 @@
+substation,split,total,eligible
+Aberdeen 66_11kV,train,35040,32008
+Aberdeen 66_11kV,val,17568,13795
+Adamstown 132_11kV,train,35040,33596
+Adamstown 132_11kV,val,17568,13684
+Avoca 66_11kV,train,35040,33928
+Avoca 66_11kV,val,17568,13795
+Avondale 33_11kV,train,35040,31536
+Avondale 33_11kV,val,17568,13790
+Baerami 33_11kV,train,35040,33728
+Baerami 33_11kV,val,17568,13599
+Belrose 33_11kV,train,35040,33833
+Belrose 33_11kV,val,17568,13389
+Berowra 132_11kV,train,35040,33869
+Berowra 132_11kV,val,17568,10054
+Blakehurst 33_11kV,train,35040,33741
+Blakehurst 33_11kV,val,17568,13737
+Branxton 66_11kV,train,35040,33596
+Branxton 66_11kV,val,17568,13596
+Cardiff 33_11kV,train,35040,33928
+Cardiff 33_11kV,val,17568,13795
+Cessnock South 33_11kV,train,35040,33738
+Cessnock South 33_11kV,val,17568,13795
+Charmhaven 132_11kV,train,35040,32204
+Charmhaven 132_11kV,val,17568,13156
+Cronulla 132_11kV,train,35040,33909
+Cronulla 132_11kV,val,17568,13740
+Croudace Bay 33_11kV,train,35040,33936
+Croudace Bay 33_11kV,val,17568,13791
+Denman 66_11kV,train,35040,32064
+Denman 66_11kV,val,17568,13312
+Edgeworth 33_11kV,train,35040,33444
+Edgeworth 33_11kV,val,17568,12045
+Empire Bay 66_11kV,train,35040,33596
+Empire Bay 66_11kV,val,17568,13698
+Engadine 132_11kV,train,35040,33596
+Engadine 132_11kV,val,17568,13236
+Galston 132_11kV,train,35040,33108
+Galston 132_11kV,val,17568,13795
+Harbord 33_11kV,train,35040,33886
+Harbord 33_11kV,val,17568,11498
+Jesmond 132_11kV,train,35040,33936
+Jesmond 132_11kV,val,17568,13753
+Jewells 33_11kV,train,35040,33744
+Jewells 33_11kV,val,17568,13795
+Killarney 33_11kV,train,35040,33909
+Killarney 33_11kV,val,17568,13606
+Lake Munmorah 132_11kV,train,35040,33596
+Lake Munmorah 132_11kV,val,17568,13795
+Lisarow 33_11kV,train,35040,33646
+Lisarow 33_11kV,val,17568,13490
+Long Jetty 66_11kV,train,35040,33909
+Long Jetty 66_11kV,val,17568,12604
+Maitland 33_11kV,train,35040,32629
+Maitland 33_11kV,val,17568,13769
+Medowie 33_11kV,train,35040,33615
+Medowie 33_11kV,val,17568,13588
+Menai 132_11kV,train,35040,32666
+Menai 132_11kV,val,17568,13719
+Merriwa 33_11kV,train,35040,33633
+Merriwa 33_11kV,val,17568,13529
+Metford 33_11kV,train,35040,33610
+Metford 33_11kV,val,17568,13778
+Mitchells Flat 66_11kV,train,35040,29701
+Mitchells Flat 66_11kV,val,17568,13420
+Mortdale 33_11kV,train,35040,33749
+Mortdale 33_11kV,val,17568,13612
+Mt Thorley 66_11kV,train,35040,33936
+Mt Thorley 66_11kV,val,17568,13795
+Nelson Bay 33_11kV,train,35040,32540
+Nelson Bay 33_11kV,val,17568,13795
+New Lambton 33_11kV,train,35040,33659
+New Lambton 33_11kV,val,17568,13581
+Newport 33_11kV,train,35040,33909
+Newport 33_11kV,val,17568,13653
+Noraville 33_11kV,train,35040,33670
+Noraville 33_11kV,val,17568,13322
+Nulkaba 33_11kV,train,35040,33722
+Nulkaba 33_11kV,val,17568,13696
+Paxton 33_11kV,train,35040,32891
+Paxton 33_11kV,val,17568,13281
+Pelican 33_11kV,train,35040,33928
+Pelican 33_11kV,val,17568,13795
+Pennant Hills 132_11kV,train,35040,33606
+Pennant Hills 132_11kV,val,17568,13746
+Rathmines 132_11kV,train,35040,33596
+Rathmines 132_11kV,val,17568,13795
+Raymond Terr NEW 33_11kV,train,35040,31144
+Raymond Terr NEW 33_11kV,val,17568,13653
+Revesby 132_11kV,train,35040,33831
+Revesby 132_11kV,val,17568,13686
+Riverwood 33_11kV,train,35040,33907
+Riverwood 33_11kV,val,17568,13653
+Rothbury 132_11kV,train,35040,33451
+Rothbury 132_11kV,val,17568,13048
+Rutherford 33_11kV,train,35040,33216
+Rutherford 33_11kV,val,17568,13795
+Sans Souci 33_11kV,train,35040,33662
+Sans Souci 33_11kV,val,17568,12574
+Scone 66_11kV,train,35040,33738
+Scone 66_11kV,val,17568,13795
+Sefton 132_11kV,train,35040,33549
+Sefton 132_11kV,val,17568,13753
+St Ives 33_11kV,train,35040,33909
+St Ives 33_11kV,val,17568,13186
+Stockton 33_11kV,train,35040,30479
+Stockton 33_11kV,val,17568,13795
+Swansea 33_11kV,train,35040,33936
+Swansea 33_11kV,val,17568,13795
+Tanilba Bay 33_11kV,train,35040,33517
+Tanilba Bay 33_11kV,val,17568,13644
+Telarah 33_11kV,train,35040,33441
+Telarah 33_11kV,val,17568,13795
+Tomaree 33_11kV,train,35040,33596
+Tomaree 33_11kV,val,17568,13651
+Toronto West 132_11kV,train,35040,33734
+Toronto West 132_11kV,val,17568,13795
+Umina 66_11kV,train,35040,33905
+Umina 66_11kV,val,17568,11729
+Wamberal 132_11kV,train,35040,33353
+Wamberal 132_11kV,val,17568,13792
+Williamtown 33_11kV,train,35040,33573
+Williamtown 33_11kV,val,17568,13486
+Woy Woy 66_11kV,train,35040,33779
+Woy Woy 66_11kV,val,17568,13749
+Wyong 132_11kV,train,35040,32204
+Wyong 132_11kV,val,17568,13498

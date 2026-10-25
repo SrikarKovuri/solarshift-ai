@@ -1,0 +1,7 @@
+{
+  "reviewed_not_executed": {
+    "test_data.py": "ada7acb4448e8a050322d26b6c053ccce8973cf88a736c5aa8387a1c9db7b6ad",
+    "test_leakage.py": "0efd3f3fd550fd9fa276ff1d2a8cc1295f358899997e01e06c34eb135f900606"
+  },
+  "reason": "Original tests require absent original generated tables and include reserved FY2025 load; adapted synthetic tests run instead."
+}

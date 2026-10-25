@@ -1,5 +1,8 @@
 # Data and forecasting methodology
 
+This document describes the archived household experiment. For the active
+substation prototype, see [Day 4 integration](substation_day4.md).
+
 1. Verify the complete source archive, or accept explicitly supplied original CSVs.
 2. Enforce observed metadata/interval column order and parse both observed date formats.
 3. Reject a complete channel-day when any interval is missing/nonfinite or negative;

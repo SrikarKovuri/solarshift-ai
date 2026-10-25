@@ -1,5 +1,64 @@
 # Development log
 
+## Day 5 warnings and constrained scenarios — 25 October 2026
+
+Implemented at the user's request with Codex assistance using Theo's trigger and
+simulation concepts. Preserved Day 4 thresholds and model artifacts; fitted pooled
+isotonic calibration only on early validation and evaluated later validation.
+Implemented bounded signed-flow shifting, disjoint household groups, exemptions,
+editable capacity/weights, conservation checks and the Day 6 replay API. Executed
+96 sensitivity scenarios on 6,569 complete days; 92 tests and independent artifact
+audit passed. Results, assumptions, rebound risks and reproducibility are documented
+in `substation_day5.md`. No reserved test, external publication or team sign-off.
+
+
+## Day 4 substation integration — 24 October 2026
+
+At the user's request, Codex adapted Theo's source utilities and implemented the
+substation pipeline, tests, validation replay interface and independent audit.
+Training-only coverage and clustering replace imported test-conditioned selection;
+genuine temperature-only weather replaces synthetic future-error donors. The
+training-selected residential cohort has 63 sites. Full details, executed metrics
+and reproducibility commands are in `substation_day4.md` and the generated outputs.
+No team signatures, final-test results or new human-authorship claims were made.
+Removed the redundant standalone `ai_assistance_log.md` and repaired its README
+link at the user's request; retained factual attribution and development history.
+
+
+## Source access and Day 4–7 plan confirmed — 23 October 2026
+
+The user provided the local `ENGG2112_ClosingThePeak` folder and requested that
+Day 4 onward incorporate Theo's requirements while retaining a working prototype
+around Day 7. Codex inspected the source inventory, handoff/status documents,
+pre-registration, config, trigger, simulation and weather donor logic. Updated
+`remaining_work_plan.md` and `product_scope.md` to remove the missing-access blocker,
+record the absent generated tables, confirm the existing price rule and preserve
+the four-session delivery sequence. This turn completed source review and planning;
+it did not rebuild data, train models, execute tests or complete Day 4 integration.
+Day 5 remains for the user's next requested session. No team signatures, messages
+or reported performance were supplied or asserted on anyone's behalf.
+
+
+## Confirmed substation product direction — 23 October 2026
+
+The user explicitly confirmed focusing the next four sessions on Theo's 2021–2025
+substation approach. Defined the final application in `product_scope.md` and removed
+the proposed household-pilot view from the remaining plan. Existing household code
+and evidence remain historical records; no further household evaluation is planned.
+The intended deliverable is a historical-replay forecast, peak-warning and response
+scenario dashboard. This update changes scope and documentation, not model code.
+
+## Team document review and revised remaining work — 23 October 2026
+
+Reviewed Theo's 7 October `Closing the Peak Data & Features Explained for the
+Team.docx` against the implemented household pipeline. The completed increments
+do not implement its revised substation data, weather features or quantile models.
+Added `remaining_work_plan.md` to incorporate that direction across the four
+remaining sessions, with deliverables and acceptance criteria. Identified missing
+team project assets, test-period cohort selection and weather-error donor chronology
+as integration dependencies. This was a planning/documentation update; no models
+were rerun, reported document results adopted, or future milestones marked complete.
+
 ## Data ingestion and validation — 21–22 October 2026 (Australia/Sydney)
 
 Work began after explicit user approval on 21 October and continued on 22 October. Source acquisition and initial test

@@ -1,5 +1,32 @@
 # Architecture and stage boundary
 
+The user confirmed the substation pivot on 23 October 2026. The target application
+is described in [product scope](product_scope.md) and its implementation sequence
+in [remaining work](remaining_work_plan.md). The architecture below documents the
+existing household pilot, retained as history; it is not the target data schema.
+
+## Implemented substation path (Day 4)
+
+`Theo's FY2021–FY2024 sources → training-fitted cleaning → training-selected residential cohort → five feature families → fixed quantile models + three baselines → common validation replay schema`
+
+`substation/pipeline.py` builds development data and models without loading FY2025
+load observations. `ausgrid.py`, `calendar_nsw.py` and `selection.py` are adapted
+source utilities. `substation/forecast.py` returns complete validation days for the
+future dashboard; `scripts/verify_substation.py` independently checks the evidence.
+See [Day 4](substation_day4.md) for schema, commands, quality flags and deviations.
+The forecast target is magnitude in MW; measured signed flow is a separate field.
+
+## Implemented warning and scenario path (Day 5)
+
+`Day 4 validation artifacts + fixed training thresholds → evening risk heuristic → early-validation isotonic calibration → later-validation warning evaluation → constrained signed-flow scenarios`
+
+`substation/response.py` supplies the explicit probability/price formulas and bounded
+energy shifting. `substation/day5.py` executes calibration, evaluations and sensitivity
+sweeps. `substation/scenario_replay.py` returns a complete site/date journey for Day 6.
+`scripts/verify_day5.py` independently verifies saved evidence and the replay API.
+
+## Archived household path
+
 Data foundation:
 
 `complete archive/local CSVs → parse → validate → interval Parquet + audit → historical chart`

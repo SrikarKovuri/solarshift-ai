@@ -1,0 +1,6 @@
+{
+  "passed": 92,
+  "failed": 0,
+  "command": "PYTHONPATH=src .venv/bin/python -m pytest -q",
+  "output": "........................................................................ [ 78%]\n....................                                                     [100%]\n92 passed in 4.99s\n"
+}

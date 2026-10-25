@@ -1,15 +1,36 @@
 # SolarShift AI — Closing the Peak
 
-An ENGG2112 offline research prototype investigating whether household demand and
-PV forecasts can inform transparent pricing and simulated evening load shifting.
+An ENGG2112 research prototype using Theo's 2021–2025 substation
+approach: forecast evening load, identify peak days and simulate voluntary load
+shifting. See [the application scope](docs/product_scope.md) for the final product.
 
-**Current increment: trained demand/PV XGBoost models and reproducible validation.**
+**Day 4 substation integration is implemented:** training-selected sites, genuine
+temperature forecasts, quantile models, three baselines and a shared validation
+replay interface. See [Day 4 implementation and reproduction](docs/substation_day4.md).
+The Streamlit dashboard remains Day 6 work.
+
+**Day 5 warnings and response scenarios are implemented:** chronological probability
+calibration, capped evening multipliers, exemptions, signed-flow simulations and
+96 checked sensitivity combinations. See [Day 5 results and API](docs/substation_day5.md).
+The integrated dashboard and explanations remain Day 6 work.
+
+**Existing implementation, now historical development work:** trained household
+demand/PV XGBoost models and reproducible validation.
 Real-data ingestion, cutoff-aware features, weekly persistence, CPU model training,
 saved-model forecasts and interactive error reports work locally. Pricing, response
 simulation, SHAP and the integrated Streamlit application remain future work.
 Validation improvements are measured; no final-test performance or energy saving is claimed.
 
 Repository: https://github.com/SrikarKovuri/solarshift-ai
+
+**Revised direction after the team document review (23 October 2026):** the
+remaining four work sessions will incorporate the document's substation-based
+forecasting, peak warnings and response simulation. See the
+[remaining work plan](docs/remaining_work_plan.md) for deliverables, dependencies
+and checks. The implementation described below is still the historical household
+pilot; the Day 4 substation implementation is documented separately above. The user confirmed
+that remaining work focuses entirely on substations; the household experiment
+will not appear in the final application.
 
 ## Quick start
 
@@ -248,8 +269,8 @@ Read [methodology](docs/methodology.md), [limitations](docs/limitations.md),
 
 Planned roles: Theo Franklin (data/features), Lucas Khanis (modelling), Srikar
 Kovuri (evaluation, ethics, integration). These roles do not imply contributions
-already performed. Actual AI assistance and human verification are recorded in
-[the assistance log](docs/ai_assistance_log.md).
+already performed. Source attribution, implementation work and verification are described in
+[the development log](docs/development_log.md).
 
 Development proceeds through separately reviewed functional increments.
 Commit dates and the development log reflect actual work. The next increment is

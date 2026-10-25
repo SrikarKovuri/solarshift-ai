@@ -1,0 +1,74 @@
+{
+  "status": "validation_only",
+  "sites": 63,
+  "train_rows": 2084110,
+  "validation_rows": 848089,
+  "evening_raw_80pct_coverage": 0.7683793709444845,
+  "quantile_crossing_fraction": 0.004011371448043779,
+  "reserved_test_opened": false,
+  "duration_seconds": 332.0065050125122,
+  "features": {
+    "calendar": [
+      "hh_sin",
+      "hh_cos",
+      "dow",
+      "month",
+      "doy_sin",
+      "doy_cos",
+      "holiday",
+      "is_dst"
+    ],
+    "historical_load": [
+      "lag_d1",
+      "lag_d7",
+      "lag_d14",
+      "same_hh_mean7",
+      "prev_day_mean",
+      "prev_eve_mean"
+    ],
+    "forecast_weather": [
+      "temp",
+      "tmax",
+      "tmin",
+      "tmean"
+    ],
+    "sun_position": [
+      "sun_elev"
+    ],
+    "training_attributes": [
+      "level_log",
+      "evening_share",
+      "lat",
+      "lon"
+    ]
+  },
+  "parameters": {
+    "n_estimators": 240,
+    "max_depth": 5,
+    "learning_rate": 0.05,
+    "min_child_weight": 50,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "tree_method": "hist",
+    "n_jobs": 4,
+    "random_state": 2112
+  },
+  "reload_verified": true,
+  "availability_contract": "Zero-latency load through D midnight; weather valid-hour minus 24h, latest D-1 23:00. Historical replay assumption, not operational latency validation.",
+  "versions": {
+    "numpy": "2.2.6",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.6.1",
+    "xgboost": "3.0.5",
+    "pyarrow": "19.0.1"
+  },
+  "implementation_hashes": {
+    "forecast.py": "296f9e0e9886893391179fe4ef2297e3f7a4cf057d3045e03384b4029067b151",
+    "config.py": "b6edf741e0b9cecf0daff845598be75909aba959316f392256bec45622d0c3b0",
+    "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pipeline.py": "090a4b9bc37dcd86a876b703ddafd7fa2d3fb3449b9a4c711603b34b3f94c821",
+    "calendar_nsw.py": "8c470c0ea0f0e2a0717a3f8916051ba7b2815f1003ed344e73d0ba892e4496b8",
+    "selection.py": "0dadbed7e9990188dd8c06d0b43b4702c4a68de1ee17ebd76a041fa0998d9b1c",
+    "ausgrid.py": "023686b7b4301e4213496e9822d66d6ffa9989a156664c4f5ee35d95c538858c"
+  }
+}

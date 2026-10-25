@@ -1,0 +1,76 @@
+{
+  "status": "later_validation_scenario_analysis",
+  "calibration_fit_days": 9747,
+  "evaluation_site_days": 7982,
+  "complete_simulation_site_days": 6569,
+  "excluded_incomplete_simulation_days": 1413,
+  "defaults": {
+    "residential_share": 0.6,
+    "flexible_fraction": 0.15,
+    "response_rate": 0.1,
+    "exempt_share": 0.1,
+    "share_solar": 0.21,
+    "share_battery": 0.02,
+    "battery_factor": 2.0,
+    "to_midday": 0.5
+  },
+  "capacity_assumption": "site training 99th percentile magnitude; not equipment rating",
+  "brier": {
+    "p_raw": 0.04391499594628565,
+    "p_calibrated": 0.04300489455759603
+  },
+  "warning_frequency": 0.13016787772488098,
+  "uplift_frequency": 0.13016787772488098,
+  "default_all_days": {
+    "mean_displaced_mwh": 0.020795618178489062,
+    "total_displaced_mwh": 136.60641581449465,
+    "capacity_limited_days": 36,
+    "max_energy_error_mwh": 1.1368683772161603e-13,
+    "evening_mean_reduction_pct": 0.04266004319781178,
+    "evening_max_reduction_pct": 0.04303333114625794,
+    "whole_day_max_reduction_pct": 0.03304975829069648,
+    "whole_day_absolute_flow_max_change_mw": -0.0036555714165146403,
+    "increased_whole_day_max_days": 44,
+    "late_window_peak_increased_days": 687,
+    "new_peak_outside_evening_days": 6
+  },
+  "default_signal_days": {
+    "mean_displaced_mwh": 0.17880420918127576,
+    "total_displaced_mwh": 136.60641581449468,
+    "capacity_limited_days": 36,
+    "max_energy_error_mwh": 1.1368683772161603e-13,
+    "evening_mean_reduction_pct": 0.33187831905963616,
+    "evening_max_reduction_pct": 0.3330587913849495,
+    "whole_day_max_reduction_pct": 0.2535688901995339,
+    "whole_day_absolute_flow_max_change_mw": -0.03143121549094852,
+    "increased_whole_day_max_days": 44,
+    "late_window_peak_increased_days": 687,
+    "new_peak_outside_evening_days": 6
+  },
+  "default_event_days": {
+    "mean_displaced_mwh": 0.17814606688157225,
+    "total_displaced_mwh": 103.14657272443033,
+    "capacity_limited_days": 36,
+    "max_energy_error_mwh": 1.1368683772161603e-13,
+    "evening_mean_reduction_pct": 0.28643889423073576,
+    "evening_max_reduction_pct": 0.2869237106924587,
+    "whole_day_max_reduction_pct": 0.2524725062379118,
+    "whole_day_absolute_flow_max_change_mw": -0.03558195262170333,
+    "increased_whole_day_max_days": 0,
+    "late_window_peak_increased_days": 383,
+    "new_peak_outside_evening_days": 3
+  },
+  "baseline_days_above_assumed_ceiling": 586,
+  "sweep_scenarios": 96,
+  "sweep_site_day_runs": 630624,
+  "input_hashes": {
+    "validation_forecasts.parquet": "6c35a49f3551349714f7c8a22b0d78536e8f994c118b2157bbae473540189a16",
+    "clean_development.parquet": "1580bbb2c4665bc28c4d41313eb6371da95f47782de14692a99986cd59717d76",
+    "peak_thresholds_training.csv": "b1cb639311d35534630423d6be80581228870102caa2fa61c5720d100b4f6f73"
+  },
+  "reserved_test_scored": false,
+  "implementation_hashes": {
+    "day5.py": "14a9954b19ee3883d8f7e705d7fd72e2ccf882af1244abbc32818247d1f90f38",
+    "response.py": "a881d715df9bf84b11b716d2c45a06319737a160aff0a14b965cdbc811072d21"
+  }
+}

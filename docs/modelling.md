@@ -1,5 +1,8 @@
 # Supervised forecasting and validation
 
+This document describes the archived household experiment. For the active
+substation prototype, see [Day 4 integration](substation_day4.md).
+
 ## Model and forecast definition
 
 One pooled XGBoost regression model predicts GC and another predicts GG across
