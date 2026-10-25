@@ -1,7 +1,7 @@
 # Data provenance
 
 This document describes the archived household experiment. For the active
-substation prototype, see [Day 4 integration](substation_day4.md).
+substation prototype, see [Forecast integration](substation_forecasting.md).
 
 ## Source chain
 
@@ -18,7 +18,7 @@ The archive includes the original `Ausgrid solar home electricity data notes
 (Aug 2014).pdf` and three annual CSVs. It also contains unrelated monthly data,
 which is checked as part of archive integrity but not extracted for this project.
 
-The first feasibility-review download was incomplete. During Day 1, the remaining
+The first feasibility-review download was incomplete. During initial ingestion, the remaining
 bytes were downloaded and the entire archive was checked with Python ZipFile's
 CRC verification. No partially recovered member is accepted by the acquisition
 module. Exact hashes and verification time appear in `results/evidence/acquisition.json`.

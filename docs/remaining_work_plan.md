@@ -2,14 +2,16 @@
 
 Updated 25 October 2026 after reviewing Theo's 7 October team document,
 `Closing the Peak Data & Features Explained for the Team.docx`.
-This plan covers the four remaining work sessions (Days 4–7), using descriptive
-milestone names. Days 4 and 5 are implemented; Days 6–7 remain planned deliverables. See [Day 5 results](substation_day5.md). See [Day 4 evidence and deviations](substation_day4.md).
+This plan tracks functional milestones and their acceptance criteria. Forecast
+integration and response scenarios are implemented; dashboard integration and
+final evaluation remain outstanding. See [forecast evidence](substation_forecasting.md)
+and [response evidence](substation_response.md).
 
 ## What the document changes
 
-Before Day 4, the local implementation used Ausgrid household GC/GG data from
+Before substation integration, the local implementation used Ausgrid household GC/GG data from
 2010–2013, a 30-household pilot and point XGBoost forecasts. That archived experiment does not implement
-the document's revised substation study. The Day 4 implementation now supplies
+the document's revised substation study. The substation implementation now supplies
 substation validation output with the deviations documented separately. Similarities such as the evening window,
 weekly persistence and leakage checks do not establish use of this document.
 
@@ -27,8 +29,8 @@ The intended application is defined in [product scope](product_scope.md).
 ## Source access and revised handover — 23 October 2026 (historical status)
 
 The user supplied `/Users/srikarkovuri/Downloads/ENGG2112_ClosingThePeak/` and
-confirmed the pivot from Day 4 onward, with a full working prototype still targeted
-around Day 7. The latest request explicitly asks to complete Day 4 before moving to Day 5. Keep the existing dashboard,
+confirmed the substation pivot while retaining the working-prototype objective.
+Keep the existing dashboard,
 explanations, simulation and handover deliverables; change their data/model basis.
 
 The folder is accessible. Inspection confirmed source modules, nine notebooks,
@@ -61,13 +63,13 @@ Source inspection resolves several planning details:
 - The pre-registration specifies **weekly** block bootstrap (500 resamples,
   seed 2112). Use that specification for the primary uncertainty analysis.
 
-To protect the Day 7 target, prioritize one complete validation-backed journey:
+Prioritize one complete validation-backed journey:
 site/date → forecast → warning → response scenario → evidence. LSTM, hosting and
 extra model searches are stretch work. A runnable validation-backed prototype can
 be delivered even if team sign-off for final-test evaluation remains outstanding.
 Do not describe that as completed held-out evaluation.
 
-## Data integration and forecast alignment — Day 4
+## Data integration and forecast alignment
 
 **Outcome:** a reproducible substation validation forecast feeding a common
 interface, with provenance and units visible.
@@ -98,7 +100,7 @@ feature-availability tests, reproducible baseline comparison and no test scoring
 If assets are unavailable, finish the interface and small labelled test fixtures;
 record real-data integration as blocked, rather than marking this milestone done.
 
-## Peak warnings and constrained response — Day 5 (implemented 25 October)
+## Peak warnings and constrained response (implemented 25 October)
 
 **Outcome:** an explainable warning and pricing rule with an auditable simulation.
 
@@ -128,7 +130,7 @@ record real-data integration as blocked, rather than marking this milestone done
 boundary checks and conserved energy across the full sensitivity sweep. Treat
 Deakin's 17.3% as an attributed analogy only, never a measured evening response.
 
-## Integrated prototype and explanations — Day 6
+## Integrated prototype and explanations
 
 **Outcome:** an interactive Streamlit demonstration using the revised pipeline.
 
@@ -147,7 +149,7 @@ Deakin's 17.3% as an attributed analogy only, never a measured evening response.
 **Acceptance:** a complete site/date → forecast → warning → scenario demonstration,
 clear unavailable-data errors, verified chart labels and documented limitations.
 
-## Final evaluation and handover — Day 7
+## Final evaluation and handover
 
 **Outcome:** a reproducible evidence pack, demonstration and report-ready findings.
 
@@ -200,17 +202,8 @@ Theo supplies and reviews the data/features assets; Lucas reviews quantile model
 calibration and forecast evaluation; Srikar reviews pricing, equity, simulation and
 integration. These are proposed responsibilities, not claims of work completed.
 
-## Daily delivery preference — confirmed 25 October 2026
+## Delivery practice
 
-At the end of each user-requested day's work, commit the completed code, tests,
-documentation and compact evidence, then push to the project repository. Use
-descriptive milestone commit messages and actual completion timestamps. Report
-the commit and push outcome in the handover. Do not backdate commits or rewrite
-history to imply earlier completion; Days 4–5 were pushed together in c9fc280.
+Commit and push completed, verified changes with descriptive milestone messages.
 Keep raw/generated datasets, model binaries and environments excluded by Git rules.
-
-The remaining target is two work sessions: Day 6 integrates the dashboard and
-explanations; Day 7 verifies the complete journey and prepares the demonstration
-and handover. If sessions occur daily after Day 5, the target is 27 October 2026.
-Final reserved-test evaluation remains conditional on method freeze and genuine
-team sign-off; the working validation-backed prototype does not depend on that.
+Final reserved-test evaluation depends on method freeze and genuine team sign-off.

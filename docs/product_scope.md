@@ -13,7 +13,7 @@ household load shifting reduce those peaks under stated assumptions?
 It is a research decision-support prototype, delivered as a locally runnable
 Streamlit browser application with reproducible Python models and evidence.
 Network-planning use is the demonstration scenario; operational deployment is
-outside the four-session scope.
+outside the prototype scope.
 
 ## Main user journey
 
@@ -57,7 +57,7 @@ power and MWh for energy. Do not present magnitude as signed net demand.
 - Required scientific checks remain part of the new substation work. The pivot
   retires the old experiment; it does not remove leakage or correctness checks.
 
-## Four remaining sessions
+## Implementation milestones
 
 Data and forecast integration → peak warnings and response simulation → application
 and explanations → frozen evaluation and handover. Detailed acceptance criteria
@@ -65,14 +65,13 @@ are in [the remaining work plan](remaining_work_plan.md).
 
 Theo's source folder became accessible on 23 October 2026 at
 `/Users/srikarkovuri/Downloads/ENGG2112_ClosingThePeak/`. Raw archives, weather,
-code and reports are present. Day 4 rebuilt the cleaned development tables and
-feature table in this workspace. Source access and Day 4 validation-model integration are complete; the revised
-application remains planned work. See [Day 4 integration](substation_day4.md). The working prototype target remains Day 7;
-final-test reporting depends separately on the documented method freeze and genuine
+code and reports are present. The integration work rebuilt the cleaned development tables and
+feature table in this workspace. Source access and validation-model integration are complete; the revised
+application remains planned work. See [Forecast integration](substation_forecasting.md). Final-test reporting depends separately on the documented method freeze and genuine
 team sign-off. See the remaining work plan for the inspected handover details.
 
-## Day 5 status — 25 October 2026
+## Response implementation status — 25 October 2026
 
 Calibrated validation warnings, capped evening multipliers, exemptions and
 capacity-constrained signed-flow scenarios now run locally. The replay API is
-ready for the Day 6 dashboard. See [Day 5 evidence and limitations](substation_day5.md).
+ready for the integrated dashboard. See [Response evidence and limitations](substation_response.md).

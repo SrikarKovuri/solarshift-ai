@@ -1,7 +1,7 @@
 # Known limitations and open decisions
 
 This document describes the archived household experiment. For the active
-substation prototype, see [Day 4 integration](substation_day4.md).
+substation prototype, see [Forecast integration](substation_forecasting.md).
 
 - Historical 2010–2013 solar households do not represent current NSW equipment,
   tariffs, adoption, batteries, renters or all customer groups.

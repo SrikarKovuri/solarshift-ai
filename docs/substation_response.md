@@ -1,8 +1,8 @@
-# Day 5 — peak warnings, pricing and constrained response
+# Peak warnings, pricing and constrained response
 
-Completed 25 October 2026 on the Day 4 substation pivot. Outputs are historical
+Completed 25 October 2026 on the substation pivot. Outputs are historical
 validation and scenario evidence. No reserved-test scoring, live pricing or device
-control was performed. Day 6 remains the integrated dashboard and explanations.
+control was performed. Dashboard integration and explanations remain outstanding.
 
 ## Executed results
 
@@ -54,7 +54,7 @@ assumptions to reproduce Theo's reference figures.
 ## Warning and calibration definitions
 
 A peak event is a complete 16:00–21:00 mean **flow magnitude** above that site's
-training 90th percentile of complete evening means. Day 4 thresholds are hashed and
+training 90th percentile of complete evening means. Training-derived thresholds are hashed and
 independently reconstructed from May 2021–April 2023 data before this run proceeds.
 Thresholds remain in MW and do not roll forward.
 
@@ -70,7 +70,7 @@ and events. Its saved x/y knots support linear interpolation and endpoint clippi
 Later validation is evaluated without refitting. Early-period calibrated probabilities
 and prices are left unavailable in the published daily table, avoiding an in-sample
 performance claim. This probability calibration is separate from forecast-interval
-CQR calibration, which remains Day 7 work. No final-test generalization or confidence
+CQR calibration, which remains final-evaluation work. No final-test generalization or confidence
 interval is claimed; earlier project development has already inspected validation.
 
 ## Transparent price signal and equity
@@ -149,11 +149,11 @@ PYTHONPATH=src .venv/bin/python scripts/verify_day5.py
 ```
 
 Generated tables are under `results/generated/substation_day5/`. Compact evidence
-is under `results/evidence/substation_day5/`. Inputs are checked against the Day 4
+is under `results/evidence/substation_day5/`. Inputs are checked against the forecast
 audit's hashes before evaluation. Raw data and the original source folder are not
 modified. The original household experiment remains archived.
 
-For Day 6, call:
+For dashboard integration, call:
 
 ```python
 from solarshift.substation.scenario_replay import replay_scenario
@@ -190,5 +190,5 @@ and exercises the dashboard API on complete and actively shifted examples.
 
 Theo's supplied `trigger.py` and `simulate.py` provided the original warning and
 scenario concepts. Codex implemented this adapted, bounded, validation-only version,
-tests and evidence under the user's requested Day 5 work. Original-file hashes are
+tests and evidence under the user's requested response-simulation work. Original-file hashes are
 recorded with the evidence. No team signatures or final-method approval are implied.

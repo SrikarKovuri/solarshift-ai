@@ -1,4 +1,4 @@
-# Day 4 — substation data and forecast integration
+# Substation data and forecast integration
 
 Implemented 24 October 2026. This is historical validation replay, with no reserved
 load-test scoring. The next milestone is peak warnings and response simulation.
@@ -133,8 +133,7 @@ error using training mean as denominator. These are pooled interval metrics, not
 network-total forecast errors or equal-weight site averages. Baselines share the
 same non-anomalous training population where fitting is required.
 
-The raw q10–q90 band has nominal 80% coverage; it is not yet recalibrated. Day 7
-retains chronological CQR, weekly bootstrap, robustness and final-test freeze work.
+The raw q10–q90 band has nominal 80% coverage; it is not yet recalibrated. Final evaluation retains chronological CQR, weekly bootstrap, robustness and final-test freeze work.
 No measured response benefit or reproduced Theo headline result is claimed.
 
 `validation_forecasts.parquet` provides site, issue time, interval start/end,
@@ -154,5 +153,5 @@ weather. The independent audit rejoins actuals and persistence from cleaned sour
 reloads native boosters, verifies inverse scaling, and recomputes shared-row metrics.
 
 Peak probabilities, calibration, pricing and energy-conserving response scenarios
-are Day 5 work. Dashboard and explanations remain Day 6. Training carbon measurement
+are implemented in the response module. Dashboard integration and explanations remain outstanding. Training carbon measurement
 has not been recorded for this substation run; the household estimate is not reused.

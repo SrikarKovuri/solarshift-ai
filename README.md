@@ -4,15 +4,15 @@ An ENGG2112 research prototype using Theo's 2021–2025 substation
 approach: forecast evening load, identify peak days and simulate voluntary load
 shifting. See [the application scope](docs/product_scope.md) for the final product.
 
-**Day 4 substation integration is implemented:** training-selected sites, genuine
+**Substation integration is implemented:** training-selected sites, genuine
 temperature forecasts, quantile models, three baselines and a shared validation
-replay interface. See [Day 4 implementation and reproduction](docs/substation_day4.md).
-The Streamlit dashboard remains Day 6 work.
+replay interface. See [Forecast implementation and reproduction](docs/substation_forecasting.md).
+The Streamlit dashboard remains outstanding.
 
-**Day 5 warnings and response scenarios are implemented:** chronological probability
+**Warnings and response scenarios are implemented:** chronological probability
 calibration, capped evening multipliers, exemptions, signed-flow simulations and
-96 checked sensitivity combinations. See [Day 5 results and API](docs/substation_day5.md).
-The integrated dashboard and explanations remain Day 6 work.
+96 checked sensitivity combinations. See [Response results and API](docs/substation_response.md).
+The integrated dashboard and explanations remain outstanding.
 
 **Existing implementation, now historical development work:** trained household
 demand/PV XGBoost models and reproducible validation.
@@ -24,11 +24,11 @@ Validation improvements are measured; no final-test performance or energy saving
 Repository: https://github.com/SrikarKovuri/solarshift-ai
 
 **Revised direction after the team document review (23 October 2026):** the
-remaining four work sessions will incorporate the document's substation-based
+project incorporates the document's substation-based
 forecasting, peak warnings and response simulation. See the
 [remaining work plan](docs/remaining_work_plan.md) for deliverables, dependencies
 and checks. The implementation described below is still the historical household
-pilot; the Day 4 substation implementation is documented separately above. The user confirmed
+pilot; the substation implementation is documented separately above. The user confirmed
 that remaining work focuses entirely on substations; the household experiment
 will not appear in the final application.
 

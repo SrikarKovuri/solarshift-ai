@@ -1,7 +1,7 @@
 # Supervised forecasting and validation
 
 This document describes the archived household experiment. For the active
-substation prototype, see [Day 4 integration](substation_day4.md).
+substation prototype, see [Forecast integration](substation_forecasting.md).
 
 ## Model and forecast definition
 
