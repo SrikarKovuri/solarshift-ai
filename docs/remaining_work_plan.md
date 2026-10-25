@@ -199,3 +199,18 @@ assumption is visible, and the report distinguishes validation from held-out tes
 Theo supplies and reviews the data/features assets; Lucas reviews quantile models,
 calibration and forecast evaluation; Srikar reviews pricing, equity, simulation and
 integration. These are proposed responsibilities, not claims of work completed.
+
+## Daily delivery preference — confirmed 25 October 2026
+
+At the end of each user-requested day's work, commit the completed code, tests,
+documentation and compact evidence, then push to the project repository. Use
+descriptive milestone commit messages and actual completion timestamps. Report
+the commit and push outcome in the handover. Do not backdate commits or rewrite
+history to imply earlier completion; Days 4–5 were pushed together in c9fc280.
+Keep raw/generated datasets, model binaries and environments excluded by Git rules.
+
+The remaining target is two work sessions: Day 6 integrates the dashboard and
+explanations; Day 7 verifies the complete journey and prepares the demonstration
+and handover. If sessions occur daily after Day 5, the target is 27 October 2026.
+Final reserved-test evaluation remains conditional on method freeze and genuine
+team sign-off; the working validation-backed prototype does not depend on that.
