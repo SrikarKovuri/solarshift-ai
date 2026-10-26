@@ -7,18 +7,17 @@ shifting. See [the application scope](docs/product_scope.md) for the final produ
 **Substation integration is implemented:** training-selected sites, genuine
 temperature forecasts, quantile models, three baselines and a shared validation
 replay interface. See [Forecast implementation and reproduction](docs/substation_forecasting.md).
-The Streamlit dashboard remains outstanding.
+The Streamlit dashboard is implemented; see [dashboard and demo guide](docs/dashboard.md).
 
 **Warnings and response scenarios are implemented:** chronological probability
 calibration, capped evening multipliers, exemptions, signed-flow simulations and
 96 checked sensitivity combinations. See [Response results and API](docs/substation_response.md).
-The integrated dashboard and explanations remain outstanding.
+The integrated dashboard and grouped permutation explanations are implemented.
 
 **Existing implementation, now historical development work:** trained household
 demand/PV XGBoost models and reproducible validation.
 Real-data ingestion, cutoff-aware features, weekly persistence, CPU model training,
-saved-model forecasts and interactive error reports work locally. Pricing, response
-simulation, SHAP and the integrated Streamlit application remain future work.
+saved-model forecasts and interactive error reports work locally. This household work is archived; the current dashboard uses only substations.
 Validation improvements are measured; no final-test performance or energy saving is claimed.
 
 Repository: https://github.com/SrikarKovuri/solarshift-ai
@@ -31,6 +30,17 @@ and checks. The implementation described below is still the historical household
 pilot; the substation implementation is documented separately above. The user confirmed
 that remaining work focuses entirely on substations; the household experiment
 will not appear in the final application.
+
+## Launch the current substation application
+
+```sh
+PYTHONPATH=src .venv/bin/python -m streamlit run streamlit_app.py --server.address=127.0.0.1 --browser.gatherUsageStats=false
+```
+
+Requires the local Day 4/5 artifacts and dependencies below. See the
+[dashboard guide](docs/dashboard.md) for setup, a short demo, explanations and
+verification. Forecast/warning, response scenario and evidence tabs are implemented.
+Final frozen evaluation and handover remain outstanding.
 
 ## Quick start
 
@@ -273,8 +283,7 @@ already performed. Source attribution, implementation work and verification are 
 [the development log](docs/development_log.md).
 
 Development proceeds through separately reviewed functional increments.
-Commit dates and the development log reflect actual work. The next increment is
-pricing and response simulation, started only when requested.
+Commit dates and the development log reflect actual work. The next increment is frozen evaluation and handover; reserved-test scoring requires genuine team sign-off.
 
 ## Source and software rights
 

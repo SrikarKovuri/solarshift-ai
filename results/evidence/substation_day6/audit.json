@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "catalog_days": 6569,
+  "sites": 63,
+  "explanation_rows": 12000,
+  "saved_forecast_sample_mae_mw": 1.1346942823238835,
+  "active_example": {
+    "site": "Aberdeen 66_11kV",
+    "date": "2023-11-12",
+    "moved_mwh": 0.0812480943801233
+  },
+  "reserved_test_opened": false
+}

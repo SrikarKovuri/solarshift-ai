@@ -67,7 +67,7 @@ Theo's source folder became accessible on 23 October 2026 at
 `/Users/srikarkovuri/Downloads/ENGG2112_ClosingThePeak/`. Raw archives, weather,
 code and reports are present. The integration work rebuilt the cleaned development tables and
 feature table in this workspace. Source access and validation-model integration are complete; the revised
-application remains planned work. See [Forecast integration](substation_forecasting.md). Final-test reporting depends separately on the documented method freeze and genuine
+application is implemented; see [dashboard guide](dashboard.md). See [Forecast integration](substation_forecasting.md). Final-test reporting depends separately on the documented method freeze and genuine
 team sign-off. See the remaining work plan for the inspected handover details.
 
 ## Response implementation status — 25 October 2026

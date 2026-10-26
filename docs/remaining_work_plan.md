@@ -1,10 +1,10 @@
 # Remaining prototype work
 
-Updated 25 October 2026 after reviewing Theo's 7 October team document,
+Updated 27 October 2026 after reviewing Theo's 7 October team document,
 `Closing the Peak Data & Features Explained for the Team.docx`.
 This plan tracks functional milestones and their acceptance criteria. Forecast
-integration and response scenarios are implemented; dashboard integration and
-final evaluation remain outstanding. See [forecast evidence](substation_forecasting.md)
+integration, response scenarios, dashboard integration and grouped explanations are implemented;
+final evaluation and handover remain outstanding. See [forecast evidence](substation_forecasting.md)
 and [response evidence](substation_response.md).
 
 ## What the document changes
@@ -130,9 +130,11 @@ record real-data integration as blocked, rather than marking this milestone done
 boundary checks and conserved energy across the full sensitivity sweep. Treat
 Deakin's 17.3% as an attributed analogy only, never a measured evening response.
 
-## Integrated prototype and explanations
+## Integrated prototype and explanations (implemented 27 October)
 
 **Outcome:** an interactive Streamlit demonstration using the revised pipeline.
+Implemented and checked; see [dashboard guide](dashboard.md). Grouped permutation importance
+is included; optional SHAP is deferred.
 
 - Add site/date selection, forecast ranges and actual flow, evening-window marking,
   peak threshold, warning probability, multiplier and scenario controls.

@@ -2,7 +2,7 @@
 
 Completed 25 October 2026 on the substation pivot. Outputs are historical
 validation and scenario evidence. No reserved-test scoring, live pricing or device
-control was performed. Dashboard integration and explanations remain outstanding.
+control was performed. Dashboard integration and grouped explanations were completed on 27 October; see [dashboard guide](dashboard.md).
 
 ## Executed results
 

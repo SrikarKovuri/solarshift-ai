@@ -1,0 +1,19 @@
+{
+  "status": "later_validation_only",
+  "seed": 2112,
+  "rows": 12000,
+  "repeats": 5,
+  "sample_evening_mae_mw": 1.1346942823238835,
+  "first_date": "2023-11-01 00:00:00",
+  "last_date": "2024-04-30 00:00:00",
+  "model_hashes": {
+    "q10.ubj": "2a21570641c40a6ca60798c252889a06169547a722bcf5fc5c4a67a394be6d4e",
+    "q50.ubj": "f5df00f6d446e3ecada846a2c2cdd032079581f5371bb11a72c246e89d0c25f4",
+    "q90.ubj": "ca5ae9cc10d3d890d671e5a50c386f3954707d615e77d33ed7fd79f179e5be6e"
+  },
+  "feature_artifact_sha256": "a5fd76b0d52f7a7f2f66a3897bbe92a0c99b99a20b85035cc10d74414011760b",
+  "method": "Joint row permutation per feature family; sorted/clipped quantile median; fixed original site MW scale.",
+  "limitations": "Global associations, not causal or selected-day explanations. Correlation and off-manifold shuffles affect importance. Repeat SD is not a confidence interval.",
+  "shap": "Deferred: grouped importance is the implemented explanation; no local SHAP claim.",
+  "reserved_test_opened": false
+}

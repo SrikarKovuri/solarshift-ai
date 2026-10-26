@@ -1,5 +1,23 @@
 # Development log
 
+## Integrated dashboard and explanations — 27 October 2026
+
+Work began on 26 October and continued after midnight in Australia/Sydney. At the
+user’s request, Codex connected the substation validation replay, calibrated peak
+warnings and constrained response into a local Streamlit application. Added
+site/date selection, separate magnitude/signed-flow charts, scenario controls,
+equity explanations, evidence tables and CSV/assumption exports. Computed grouped
+permutation importance on 12,000 later-validation evening intervals (five repeats)
+using the existing saved models. Historical load and forecast temperature dominate
+this global diagnostic; no causal or local SHAP claim is made.
+
+All 96 tests passed, including real-artifact UI interactions; dependency consistency
+and an independent explanation/catalog/scenario audit passed. Browser layout was
+inspected and screenshots retained. See `dashboard.md` for the demo and reproduction.
+No model retraining, reserved-test scoring, team signatures or carbon claims were
+introduced. Final frozen evaluation and handover remain outstanding.
+
+
 ## Warnings and constrained scenarios — 25 October 2026
 
 Implemented at the user's request with Codex assistance using Theo's trigger and

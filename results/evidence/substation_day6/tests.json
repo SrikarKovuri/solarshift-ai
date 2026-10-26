@@ -1,0 +1,9 @@
+{
+  "tests": 96,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "duration_seconds": 5.062,
+  "status": "passed",
+  "ui_followup": "Four dashboard checks rerun after chart presentation update; passed."
+}

@@ -12,7 +12,7 @@ existing household pilot, retained as history; it is not the target data schema.
 `substation/pipeline.py` builds development data and models without loading FY2025
 load observations. `ausgrid.py`, `calendar_nsw.py` and `selection.py` are adapted
 source utilities. `substation/forecast.py` returns complete validation days for the
-future dashboard; `scripts/verify_substation.py` independently checks the evidence.
+implemented dashboard; `scripts/verify_substation.py` independently checks the evidence.
 See [Forecast integration](substation_forecasting.md) for schema, commands, quality flags and deviations.
 The forecast target is magnitude in MW; measured signed flow is a separate field.
 
@@ -24,6 +24,15 @@ The forecast target is magnitude in MW; measured signed flow is a separate field
 energy shifting. `substation/day5.py` executes calibration, evaluations and sensitivity
 sweeps. `substation/scenario_replay.py` returns a complete site/date journey for dashboard integration.
 `scripts/verify_day5.py` independently verifies saved evidence and the replay API.
+
+## Implemented application and explanations
+
+`streamlit_app.py` connects the complete-day catalog, replay API and evidence tables.
+`substation/dashboard.py` keeps magnitude forecasts separate from signed-flow charts.
+`substation/explain.py` reloads the fixed models for later-validation grouped
+permutation importance; `scripts/verify_day6.py` independently matches its sampled
+loss to saved predictions and verifies the scenario catalog. No training or reserved
+observations are loaded by the interactive application. See [dashboard guide](dashboard.md).
 
 ## Archived household path
 
@@ -60,8 +69,7 @@ reproduces forecasts and checks exact baseline eligibility before reporting metr
 `models/forecast.py` produces 48 half-hours per target for a supported validation day.
 `scripts/verify_models.py` independently verifies source joins, metrics and repeat fits.
 
-Transparent pricing, constrained response, SHAP and the Streamlit interface remain
-future work. The model report is a usable research artefact, not the finished app.
+This household branch is archived and is not loaded by the current application.
 
 ## Interval schema
 

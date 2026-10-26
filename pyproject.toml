@@ -4,10 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "solarshift-ai"
-version = "0.3.0"
-description = "Closing the Peak: reproducible household solar data and demand-response research"
+version = "0.4.0"
+description = "Closing the Peak: substation forecasting and demand-response research"
 requires-python = ">=3.11,<3.14"
-dependencies = ["numpy==2.2.6", "pandas==2.2.3", "pyarrow==19.0.1", "plotly==6.0.1", "xgboost==3.0.5", "scikit-learn==1.6.1", "codecarbon==3.0.7"]
+dependencies = ["numpy==2.2.6", "pandas==2.2.3", "pyarrow==19.0.1", "plotly==6.0.1", "xgboost==3.0.5", "scikit-learn==1.6.1", "codecarbon==3.0.7", "streamlit==1.50.0"]
 
 [project.optional-dependencies]
 dev = ["pytest==8.3.5"]
