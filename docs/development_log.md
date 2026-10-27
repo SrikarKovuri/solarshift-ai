@@ -264,3 +264,10 @@ Streamlit application, SHAP and final frozen-method test evaluation remain later
 work. Human team review remains pending; no teammate authorship is asserted.
 
 Commit purpose: `feat(ml): implement and evaluate XGBoost forecasting`.
+
+## 28 October 2026 — Atlas theme and validation handover
+
+Reused the local Study Atlas colours and hierarchy throughout Streamlit and Plotly.
+Added source-hash-checked chronological CQR, 500 paired weekly bootstrap draws and
+monthly/anomaly sensitivity outputs. See validation_handover.md for methods and
+limits. No reserved testing, retraining or team signature was performed.

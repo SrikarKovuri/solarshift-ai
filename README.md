@@ -292,3 +292,9 @@ but the original licence grant has not independently been recovered. The archive
 original notes permit research use and disclaim representativeness. Do not assume
 this repository grants rights over the dataset. No software redistribution licence
 is selected on behalf of all team members yet.
+
+## 28 October update
+
+Atlas theme, chronological CQR diagnostics, paired weekly bootstrap and monthly/anomaly
+sensitivity slices are complete. See [validation handover](docs/validation_handover.md). Historical outstanding-work statements above describe the earlier milestone.
+Reserved testing, genuine sign-off, training carbon and broader robustness remain outstanding.

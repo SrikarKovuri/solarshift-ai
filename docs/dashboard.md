@@ -71,3 +71,9 @@ separate probability calibration. Chronological CQR, week-block bootstrap,
 robustness analysis, substation training carbon instrumentation and the reserved
 final test remain part of final evaluation. The household carbon estimate is not
 reused. No final-test observation was loaded for this milestone.
+
+## 28 October update
+
+Atlas theme, chronological CQR diagnostics, paired weekly bootstrap and monthly/anomaly
+sensitivity slices are complete. See [validation handover](validation_handover.md). Historical outstanding-work statements above describe the earlier milestone.
+Reserved testing, genuine sign-off, training carbon and broader robustness remain outstanding.

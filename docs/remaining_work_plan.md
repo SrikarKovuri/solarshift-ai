@@ -209,3 +209,9 @@ integration. These are proposed responsibilities, not claims of work completed.
 Commit and push completed, verified changes with descriptive milestone messages.
 Keep raw/generated datasets, model binaries and environments excluded by Git rules.
 Final reserved-test evaluation depends on method freeze and genuine team sign-off.
+
+## 28 October update
+
+Atlas theme, chronological CQR diagnostics, paired weekly bootstrap and monthly/anomaly
+sensitivity slices are complete. See [validation handover](validation_handover.md). Historical outstanding-work statements above describe the earlier milestone.
+Reserved testing, genuine sign-off, training carbon and broader robustness remain outstanding.

@@ -6,6 +6,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
 from solarshift.substation.dashboard import catalog, curve_figure
+from solarshift.substation.theme import CSS, style_chart
 from solarshift.substation.response import Scenario
 from solarshift.substation.scenario_replay import replay_scenario
 
@@ -13,10 +14,12 @@ ROOT = Path(__file__).resolve().parent
 GENERATED = Path(os.environ.get('SOLARSHIFT_RESULTS', ROOT / 'results/generated'))
 D4, D5 = GENERATED / 'substation_day4', GENERATED / 'substation_day5'
 st.set_page_config(page_title='Closing the Peak', page_icon='☀️', layout='wide')
-st.title('Closing the Peak')
-st.caption('SUBSTATION RESEARCH PROTOTYPE · Historical validation replay · Ausgrid data')
-st.info('Explore a forecast, inspect the peak warning, then test a voluntary response scenario. '
-        'Measured flow, model forecasts and simulated changes are separate quantities.')
+st.markdown(CSS, unsafe_allow_html=True)
+st.markdown('<div class="atlas-topline">ENG2112 / CLOSING THE PEAK · RESEARCH WORKSPACE</div>'
+            '<div class="atlas-hero"><div class="atlas-eyebrow">ENERGY SYSTEMS / VALIDATION REPLAY</div>'
+            '<h1>Understand the peak.<br><span>Explore the response.</span></h1>'
+            '<p>Trace a substation forecast from uncertainty to peak risk, then explore how voluntary '
+            'load shifting changes the evening curve.</p></div>', unsafe_allow_html=True)
 
 @st.cache_data(show_spinner=False)
 def available_days(directory4, directory5, stamp):
@@ -35,6 +38,7 @@ except (OSError, ValueError, KeyError) as exc:
     st.stop()
 
 with st.sidebar:
+    st.markdown('<div class="atlas-brand"><span>◉</span> Closing the Peak<small>ENG2112 · ENERGY ATLAS</small></div>', unsafe_allow_html=True)
     st.header('Choose a historical day')
     site = st.selectbox('Substation', days.site.unique(), key='site')
     dates = days.loc[days.site.eq(site), 'date'].tolist()
@@ -115,6 +119,22 @@ with evidence:
                 st.dataframe(pd.read_csv(path), hide_index=True, use_container_width=True)
             else:
                 st.warning(f'Evidence unavailable: {path.name}')
+    evaluation_path = GENERATED/'substation_day7'/'evaluation.json'
+    if evaluation_path.exists():
+        evaluation = json.loads(evaluation_path.read_text())
+        st.subheader('Chronological validation checks')
+        a,b,c = st.columns(3)
+        a.metric('Evening MAE improvement', f"{evaluation['bootstrap']['improvement_pct']:.1f}%")
+        b.metric('CQR interval coverage', f"{evaluation['evaluation']['cqr_coverage']:.1%}")
+        c.metric('Later-validation intervals', f"{evaluation['evaluation']['rows']:,}")
+        low, high = evaluation['bootstrap']['ci95_pct']
+        st.caption(f'Against weekly persistence · 95% week-block bootstrap interval: {low:.1f}–{high:.1f}% · 500 resamples. '
+                   'CQR fitted May–October 2023; evaluated November 2023–April 2024. The forecast chart retains its raw quantile band.')
+        with st.expander('Evaluation methods and sensitivity checks'):
+            st.json(evaluation)
+            sensitivity = evaluation_path.parent/'robustness.csv'
+            if sensitivity.exists():
+                st.dataframe(pd.read_csv(sensitivity), hide_index=True)
     st.subheader('What does the model rely on?')
     importance = GENERATED/'substation_day6'/'importance.csv'
     if importance.exists():
@@ -122,10 +142,10 @@ with evidence:
         labels = {'historical_load':'Historical load', 'forecast_weather':'Forecast temperature',
                   'calendar':'Calendar', 'sun_position':'Sun position', 'training_attributes':'Site attributes'}
         chart = go.Figure(go.Bar(x=imp.mae_increase_mw, y=imp.group.map(labels), orientation='h',
-                                error_x=dict(type='data',array=imp.repeat_sd_mw), marker_color='#0d9488'))
+                                error_x=dict(type='data',array=imp.repeat_sd_mw), marker_color='#c0e994'))
         chart.update_layout(template='plotly_white', height=300, margin=dict(l=10,r=20,t=15,b=35),
                             xaxis_title='Evening MAE increase (MW)', yaxis=dict(autorange='reversed'))
-        st.plotly_chart(chart, use_container_width=True)
+        st.plotly_chart(style_chart(chart), use_container_width=True)
         st.dataframe(imp, hide_index=True)
         st.caption('Grouped permutation importance: increase in evening MAE after jointly shuffling a feature family across sampled later-validation rows. '
                    'Five repeats, fixed seed; reported SD is repeat variability, not confidence intervals. Correlated features and implausible shuffled combinations limit interpretation. '
@@ -139,6 +159,8 @@ with evidence:
                  'Published signed flow is preserved; the model predicts its magnitude. Genuine temperature-only forecasts replace synthetic future-error donors. '
                  'Weather coverage limits the evaluation period. Forecasts and policy settings are research assumptions, not operational advice.')
         st.write('Substation training carbon has not yet been instrumented. The archived household carbon estimate does not apply. '
-                 'CQR, weekly bootstrap uncertainty and frozen final-test evaluation remain outstanding.')
+                 'Chronological CQR and weekly bootstrap diagnostics are in the validation evidence below. Frozen final-test evaluation remains outstanding.')
         st.write('Theo supplied source data/code and scenario concepts. Codex adapted the local pipeline and dashboard at Srikar’s request. Human team review remains pending.')
         st.json({'weather_provenance':f.weather_provenance.iloc[0], 'quality_flags':f.quality_flags.unique().tolist(), 'anomaly_day':bool(f.anomaly.any())})
+
+st.markdown('<div class="atlas-footer">Ausgrid historical data · Model forecasts · Simulated responses · Validation only</div>', unsafe_allow_html=True)
