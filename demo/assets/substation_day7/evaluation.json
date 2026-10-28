@@ -1,0 +1,49 @@
+{
+  "status": "validation_only",
+  "reserved_test_opened": false,
+  "source_sha256": "6c35a49f3551349714f7c8a22b0d78536e8f994c118b2157bbae473540189a16",
+  "calibration": {
+    "start": "2023-05-01",
+    "end": "2023-10-31",
+    "rows": 97633,
+    "adjustment_mw": 0.020370814654143032,
+    "method": "pooled evening MW, widen-only CQR, nominal 80%"
+  },
+  "evaluation": {
+    "start": "2023-11-01",
+    "end": "2024-04-30",
+    "rows": 79903,
+    "mae_mw": 1.102168409226908,
+    "rmse_mw": 1.959207771713478,
+    "nmae_pct": 11.173771706255273,
+    "weekly_mae_mw": 2.1815313347347387,
+    "raw_coverage": 0.7466803499242832,
+    "cqr_coverage": 0.760559678610315,
+    "raw_width_mw": 3.0121528427086846,
+    "cqr_width_mw": 3.0528944720169706
+  },
+  "bootstrap": {
+    "improvement_pct": 49.477305611980825,
+    "ci95_pct": [
+      42.815389506844674,
+      55.114397543244046
+    ],
+    "blocks": 25,
+    "resamples": 500,
+    "seed": 2112,
+    "method": "paired calendar-week blocks across all sites; percentile interval"
+  },
+  "proposed_criteria": {
+    "mae_improvement_at_least_30pct": true,
+    "improvement_lower_bound_above_15pct": true,
+    "cqr_coverage_70_to_90pct": true
+  },
+  "limitations": [
+    "Temporal dependence and distribution shift preclude an exchangeable CQR guarantee.",
+    "Pooled MW adjustment is not site-conditional coverage.",
+    "Partial boundary weeks retained; bootstrap reflects time variation, not new-site generalisation.",
+    "Anomaly exclusion and monthly slices are descriptive sensitivity checks, not earlier-year retraining.",
+    "Original substation training carbon was not instrumented and cannot be reconstructed.",
+    "Methods are a review candidate; genuine team sign-off and reserved test remain pending."
+  ]
+}

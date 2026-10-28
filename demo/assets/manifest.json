@@ -1,0 +1,30 @@
+{
+  "sites": [
+    "Aberdeen 66_11kV",
+    "Adamstown 132_11kV",
+    "Avoca 66_11kV"
+  ],
+  "site_days": 42,
+  "intervals": 2016,
+  "source_url": "https://aopt-p-001.sitecorecontenthub.cloud/api/public/content/7f1264d4b4824a78866c772de7f46c9c?v=44c7aa55",
+  "source_page": "https://www.ausgrid.com.au/about-us/about-ausgrid/research-data-sets/distribution-zone-substation-data",
+  "archive_sha256": "30be21ff0222b7398e225964b713f7827ca0f1f5c39f348f476b7540335cb045",
+  "archive_name": "ausgrid_zss_FY2024.zip",
+  "origin": "Frozen local validation-model outputs. Actuals and persistence readings are reconstructed from the official Ausgrid FY2024 archive on the marker machine.",
+  "evidence_scope": "Evidence tables describe the full validation study, not just these selected walkthrough days.",
+  "hashes": {
+    "forecasts.parquet": "3a4146997642aaa2d1648912c1b7f3e74abbc1f57e4a8a9a3bfba38dd4e966d5",
+    "substation_day5/reliability.csv": "2964a526af68e869fa7e3e94d5246bd21ab4ba751c7d66fafb650dbaed9935ab",
+    "substation_day5/calibration.json": "dcc511e74be6171fd56ebe5846e7675040f22d3d8bffba1ff87b7264d8e843ae",
+    "substation_day5/warning_metrics.csv": "de39766f2d086ca85a725988afae686bc9a9e703640b8b1ed5cdc1e2790618ba",
+    "substation_day5/scenario_capacity.csv": "24e38175c9038b53b59c620172c10f79793405f3a370f61ae436ac579ce2874b",
+    "substation_day4/summary.json": "b0cd9fe053c100182ac79dcc294b46b2cb86700af1d2af32421eb3b378528a8f",
+    "substation_day4/peak_thresholds_training.csv": "6a8504c78bd043a78edc486d1108c49b24575cb18169deaf989a8fafaa7fbf4a",
+    "substation_day4/metrics.csv": "cbd3615539b6cfd79dceef2a6a7859690a65dbf6618917c4b045cd01679d071c",
+    "substation_day4/cohort.csv": "897fdd837a686929577e228c6f76fb2ef553fd326c3f0f5b2f907a8d478ae8ee",
+    "substation_day4/training_cleaning_scales.csv": "bf1a39a5c37ef3e6bdd27d8b3e6818d682c4d57ca04fa131347ab8d3accdea38",
+    "substation_day6/importance.csv": "d8bcc1f7cc70dcbaa13e8b142e8a27045e050fc98e121b2ae2cdd83209b47ec9",
+    "substation_day7/robustness.csv": "4b3c6ecc301dc7f5e0cf784c412c5836ec8ab286d2e5af542ea3b5df575be7df",
+    "substation_day7/evaluation.json": "2ae2c57fca66f593a49c57bc57cfcdcb6270a4a46f8f8f008ab4af0d31cdcc77"
+  }
+}
