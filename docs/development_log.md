@@ -271,3 +271,21 @@ Reused the local Study Atlas colours and hierarchy throughout Streamlit and Plot
 Added source-hash-checked chronological CQR, 500 paired weekly bootstrap draws and
 monthly/anomaly sensitivity outputs. See validation_handover.md for methods and
 limits. No reserved testing, retraining or team signature was performed.
+
+## Interface readability refinement
+
+Replaced the promotional hero with a compact title, normalised type sizes and
+letter spacing, and moved location/date selection into the main page. Scenario
+controls now appear with their results in the response tab; advanced assumptions
+and warning methods use expandable sections. Added plain-language warning status
+and readable dates. Four dashboard integration checks passed, including active
+response, zero response, full exemptions and invalid household-share handling.
+
+## Approved Apple-inspired interface
+
+Applied a light system-font design with frosted navigation, blue actions, rounded
+feature cards, a matching Plotly theme and responsive layouts. Preserved the
+working forecasting, response and evidence controls. Navigation and appearance
+were checked in the browser; all four dashboard integration tests passed.
+The user reviewed the preview and explicitly requested commit and push.
+See apple_ui_preview.md for design tokens and motion implementation.

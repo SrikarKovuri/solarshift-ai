@@ -1,6 +1,7 @@
 """Run with PYTHONPATH=src python -m streamlit run streamlit_app.py."""
 import json
 import os
+import html
 from pathlib import Path
 import pandas as pd
 import plotly.graph_objects as go
@@ -13,13 +14,9 @@ from solarshift.substation.scenario_replay import replay_scenario
 ROOT = Path(__file__).resolve().parent
 GENERATED = Path(os.environ.get('SOLARSHIFT_RESULTS', ROOT / 'results/generated'))
 D4, D5 = GENERATED / 'substation_day4', GENERATED / 'substation_day5'
-st.set_page_config(page_title='Closing the Peak', page_icon='☀️', layout='wide')
+st.set_page_config(page_title='SolarShift AI | Closing the Peak', page_icon='◒', layout='wide')
 st.markdown(CSS, unsafe_allow_html=True)
-st.markdown('<div class="atlas-topline">ENG2112 / CLOSING THE PEAK · RESEARCH WORKSPACE</div>'
-            '<div class="atlas-hero"><div class="atlas-eyebrow">ENERGY SYSTEMS / VALIDATION REPLAY</div>'
-            '<h1>Understand the peak.<br><span>Explore the response.</span></h1>'
-            '<p>Trace a substation forecast from uncertainty to peak risk, then explore how voluntary '
-            'load shifting changes the evening curve.</p></div>', unsafe_allow_html=True)
+st.markdown('<nav class="apple-nav" aria-label="Main navigation"><div class="apple-nav-inner"><a class="wordmark" href="#overview">SolarShift <span>AI</span></a><div class="nav-links"><a class="optional" href="#approach">The approach</a><a href="#about">About</a><a class="nav-cta" href="#workspace">Explore the model</a></div></div></nav>\n<section class="apple-hero" id="overview"><p class="eyebrow">Closing the Peak · An ENG2112 research project</p><h1>A clearer view of demand.<br><span>A smarter way to shift it.</span></h1><p class="intro">Explore tomorrow’s peak through historical forecasts. See what changes when electricity demand moves to a different time.</p><div class="hero-actions"><a class="pill" href="#workspace">Explore the forecast</a><a class="text-link" href="#approach">How it works <span aria-hidden="true">↗</span></a></div><p class="hero-note">Historical validation. Real Ausgrid data. Simulated responses.</p></section>\n<section class="bento" id="approach" aria-label="How SolarShift works"><article><span class="step">01 / FORECAST</span><h2>See the day ahead.</h2><p>Explore half-hourly demand forecasts, with uncertainty kept in view.</p></article><article><span class="step">02 / EXPLORE</span><h2>Make room at the peak.</h2><p>Adjust voluntary participation. Compare how the daily curve changes.</p></article><article><span class="step">03 / UNDERSTAND</span><h2>Follow the evidence.</h2><p>Inspect validation results, assumptions and the limits of the model.</p></article></section>\n<div class="workspace-label" id="workspace">Your research workspace</div>', unsafe_allow_html=True)
 
 @st.cache_data(show_spinner=False)
 def available_days(directory4, directory5, stamp):
@@ -37,26 +34,40 @@ except (OSError, ValueError, KeyError) as exc:
     st.caption('Follow docs/substation_forecasting.md to rebuild local artifacts. Raw datasets are not bundled with Git.')
     st.stop()
 
-with st.sidebar:
-    st.markdown('<div class="atlas-brand"><span>◉</span> Closing the Peak<small>ENG2112 · ENERGY ATLAS</small></div>', unsafe_allow_html=True)
-    st.header('Choose a historical day')
-    site = st.selectbox('Substation', days.site.unique(), key='site')
+with st.container(border=True):
+    st.subheader('Choose a location and date')
+    location_column, date_column = st.columns([2, 1])
+    with location_column:
+        site = st.selectbox('Substation', days.site.unique(), key='site')
     dates = days.loc[days.site.eq(site), 'date'].tolist()
-    date = st.selectbox('Validation date', dates, key=f'date_{site}')
-    st.caption(f'{len(dates)} complete days available for this site. Missing or excluded days cannot be selected.')
-    st.caption('Replay: November 2023–April 2024. Reserved test disabled.')
-    st.header('Scenario assumptions')
-    response = st.slider('Response at maximum uplift (%)', 0, 30, 10, key='response') / 100
-    flexible = st.slider('Movable residential load (%)', 5, 25, 15) / 100
-    exempt = st.slider('Exempt households (%)', 0, 100, 10, key='exempt') / 100
-    residential = st.slider('Residential share of positive imports (%)', 0, 100, 60) / 100
-    with st.expander('Solar, battery and destination assumptions'):
-        solar = st.slider('Solar households (%)', 0, 100, 21) / 100
-        battery = st.slider('Solar + battery households (%)', 0, 100, 2) / 100
-        factor = st.slider('Battery response factor', 0., 5., 2., .1)
-        midday = st.slider('Shifted energy sent to 10:00–15:00 (%)', 0, 100, 50) / 100
-        capacity_factor = st.slider('Import ceiling × training proxy', 0., 2., 1., .05)
-        st.caption('Remaining energy goes to 21:00–23:00 with equal slot weights and capacity constraints.')
+    with date_column:
+        date = st.selectbox('Validation date', dates, key=f'date_{site}')
+    st.caption(f'{len(dates)} complete days available · November 2023–April 2024 · Historical data')
+
+st.markdown(f'<div class="selection-heading"><h2>{html.escape(site.replace("_", "/"))}</h2>'
+            f'<p>{pd.Timestamp(date).strftime("%A, %d %B %Y")} · Evening peak: 4–9 pm</p></div>', unsafe_allow_html=True)
+forecast, scenario, evidence = st.tabs(['1. Forecast', '2. Explore a response', '3. Evidence'])
+with scenario:
+    st.subheader('Adjust the response')
+    st.write('Change participation and exemptions to compare a simulated day with measured flow.')
+    with st.container(border=True):
+        left, right = st.columns(2)
+        with left:
+            response = st.slider('Response at maximum uplift (%)', 0, 30, 10, key='response',
+                                 help='Response assumed when the price multiplier reaches its 1.5× cap.') / 100
+            flexible = st.slider('Movable residential load (%)', 5, 25, 15,
+                                 help='Share of residential demand that can move to another time.') / 100
+        with right:
+            exempt = st.slider('Exempt households (%)', 0, 100, 10, key='exempt',
+                               help='Exempt households keep the base price and do not shift demand in this scenario.') / 100
+            residential = st.slider('Residential share of positive imports (%)', 0, 100, 60) / 100
+        with st.expander('Advanced assumptions: solar, batteries and capacity'):
+            solar = st.slider('Solar households (%)', 0, 100, 21) / 100
+            battery = st.slider('Solar + battery households (%)', 0, 100, 2) / 100
+            factor = st.slider('Battery response factor', 0., 5., 2., .1)
+            midday = st.slider('Shifted energy sent to 10:00–15:00 (%)', 0, 100, 50) / 100
+            capacity_factor = st.slider('Import ceiling × training proxy', 0., 2., 1., .05)
+            st.caption('Remaining energy goes to 21:00–23:00 with equal slot weights and capacity constraints.')
 try:
     cap = float(pd.read_csv(D5/'scenario_capacity.csv').set_index('substation').loc[site].iloc[0]) * capacity_factor
     result = replay_scenario(D4, D5, site, date,
@@ -65,24 +76,30 @@ except (OSError, ValueError, KeyError) as exc:
     st.error(f'Cannot run this scenario: {exc}')
     st.stop()
 f, metrics = result['intervals'], result['metrics']
-st.subheader(f'{site} · {date}')
-zone = cohort.loc[site].get('weather_zone', 'Unavailable')
-st.caption(f'Weather zone: {zone} · Issue time: {f.issue_time.iloc[0]} · 48 half-hour intervals · Evening: 16:00–21:00')
-forecast, scenario, evidence = st.tabs(['Forecast & warning', 'Response scenario', 'Evidence & explanations'])
 with forecast:
+    st.subheader('Evening outlook')
+    if result['warning']:
+        st.write('A peak warning is active. Explore the response tab to see how shifting demand could change the evening peak.')
+    else:
+        st.write('No peak warning for this day. The price stays at its base level, so this scenario shifts no demand.')
     a,b,c = st.columns(3)
     a.metric('Calibrated peak probability', f"{result['calibrated_probability']:.1%}")
     b.metric('Peak warning', 'Active' if result['warning'] else 'Inactive')
     c.metric('Evening multiplier (non-exempt)', f"{result['multiplier']:.3f}×")
     st.caption('Warning at probability ≥30%; uplift starts above 30%, capped at 1.5×. Exempt households remain at 1×.')
+    st.subheader('Demand throughout the day')
+    st.caption('Blue: forecast median · Grey: weekly baseline · Shaded band: forecast uncertainty')
     reveal = st.checkbox('Reveal measured magnitude for historical comparison', key='actuals')
     st.plotly_chart(curve_figure(f, actuals=reveal, threshold=result['threshold_evening_magnitude_mw']), use_container_width=True)
     st.caption('The threshold applies to the evening mean, not each interval. The q10–q90 band is a nominal 80% magnitude range; '
                f"observed evening coverage across validation is {summary['evening_raw_80pct_coverage']:.1%}. It is not a calibrated guarantee.")
-    st.write('Peak risk is a heuristic derived from evening interval quantiles, then calibrated on May–October 2023. '
-             'It assumes shared quantile ranks across intervals; three quantiles do not uniquely determine evening-mean risk.')
-    st.caption(f"Raw risk: {result['raw_probability']:.1%}. Forecasts use historical load, forecast temperature, calendar, sun position and training-derived site attributes.")
+    with st.expander('How the warning is calculated'):
+        st.caption(f"Forecast issued: {f.issue_time.iloc[0]} · Weather zone: {cohort.loc[site].get('weather_zone', 'Unavailable')} · 48 half-hour intervals")
+        st.write('Peak risk is a heuristic derived from evening interval quantiles, then calibrated on May–October 2023. '
+                 'It assumes shared quantile ranks across intervals; three quantiles do not uniquely determine evening-mean risk.')
+        st.caption(f"Raw risk: {result['raw_probability']:.1%}. Forecasts use historical load, forecast temperature, calendar, sun position and training-derived site attributes.")
 with scenario:
+    st.subheader('Scenario results')
     st.write('Retrospective simulation using measured signed flow and known headroom. Positive net imports approximate residential demand; '
              'exports are never treated as movable consumption. No measured energy or bill saving is claimed.')
     a,b,c = st.columns(3)
@@ -142,7 +159,7 @@ with evidence:
         labels = {'historical_load':'Historical load', 'forecast_weather':'Forecast temperature',
                   'calendar':'Calendar', 'sun_position':'Sun position', 'training_attributes':'Site attributes'}
         chart = go.Figure(go.Bar(x=imp.mae_increase_mw, y=imp.group.map(labels), orientation='h',
-                                error_x=dict(type='data',array=imp.repeat_sd_mw), marker_color='#c0e994'))
+                                error_x=dict(type='data',array=imp.repeat_sd_mw), marker_color='#0071e3'))
         chart.update_layout(template='plotly_white', height=300, margin=dict(l=10,r=20,t=15,b=35),
                             xaxis_title='Evening MAE increase (MW)', yaxis=dict(autorange='reversed'))
         st.plotly_chart(style_chart(chart), use_container_width=True)
@@ -159,8 +176,8 @@ with evidence:
                  'Published signed flow is preserved; the model predicts its magnitude. Genuine temperature-only forecasts replace synthetic future-error donors. '
                  'Weather coverage limits the evaluation period. Forecasts and policy settings are research assumptions, not operational advice.')
         st.write('Substation training carbon has not yet been instrumented. The archived household carbon estimate does not apply. '
-                 'Chronological CQR and weekly bootstrap diagnostics are in the validation evidence below. Frozen final-test evaluation remains outstanding.')
+                 'Chronological CQR and weekly bootstrap diagnostics are in the validation evidence above. Frozen final-test evaluation remains outstanding.')
         st.write('Theo supplied source data/code and scenario concepts. Codex adapted the local pipeline and dashboard at Srikar’s request. Human team review remains pending.')
         st.json({'weather_provenance':f.weather_provenance.iloc[0], 'quality_flags':f.quality_flags.unique().tolist(), 'anomaly_day':bool(f.anomaly.any())})
 
-st.markdown('<div class="atlas-footer">Ausgrid historical data · Model forecasts · Simulated responses · Validation only</div>', unsafe_allow_html=True)
+st.markdown('<footer class="apple-footer" id="about"><div><strong>SolarShift AI</strong><p>Closing the Peak explores substation forecasting and voluntary demand response. Built for ENG2112 using historical Ausgrid data.</p></div><div><strong>Explore</strong><a href="#workspace">Research workspace</a><a href="#approach">How it works</a><a href="#overview">Back to overview</a></div><div><strong>Research notice</strong><p>Validation prototype. Simulated effects are not measured savings or operational advice. Reserved-test evaluation remains pending.</p></div></footer>', unsafe_allow_html=True)

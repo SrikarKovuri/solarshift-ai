@@ -25,21 +25,21 @@ def curve_figure(frame, scenario=False, actuals=False, threshold=None, capacity=
     fig = go.Figure()
     x = frame.hh / 2
     if scenario:
-        traces = [('signed_actual_mw', 'Measured signed flow', '#99b9cc'),
-                  ('simulated_signed_mw', 'Simulated signed flow', '#c0e994')]
+        traces = [('signed_actual_mw', 'Measured signed flow', '#5c7086'),
+                  ('simulated_signed_mw', 'Simulated signed flow', '#0071e3')]
     else:
         fig.add_trace(go.Scatter(x=x, y=frame.q90_mw, mode='lines', line_width=0,
                                 name='q90 magnitude', showlegend=False))
         fig.add_trace(go.Scatter(x=x, y=frame.q10_mw, mode='lines', line_width=0,
-                                fill='tonexty', fillcolor='rgba(192,233,148,0.14)', name='q10–q90 magnitude range'))
-        traces = [('q50_mw', 'Forecast median magnitude', '#c0e994'),
-                  ('weekly_mw', 'Weekly persistence magnitude', '#edc48e')]
+                                fill='tonexty', fillcolor='rgba(0,113,227,0.12)', name='q10–q90 magnitude range'))
+        traces = [('q50_mw', 'Forecast median magnitude', '#0071e3'),
+                  ('weekly_mw', 'Weekly persistence magnitude', '#86868b')]
         if actuals:
-            traces += [('actual_magnitude_mw', 'Measured magnitude', '#eef1e9')]
+            traces += [('actual_magnitude_mw', 'Measured magnitude', '#1d1d1f')]
     for col, label, color in traces:
         fig.add_trace(go.Scatter(x=x, y=frame[col], mode='lines', name=label,
                                 line=dict(color=color, width=2), hovertemplate='%{y:.3f} MW<extra>%{fullData.name}</extra>'))
-    fig.add_vrect(x0=16, x1=21, fillcolor='#edc48e', opacity=.12, line_width=0)
+    fig.add_vrect(x0=16, x1=21, fillcolor='#86868b', opacity=.12, line_width=0)
     if threshold is not None:
         fig.add_hline(y=threshold, line_dash='dot', annotation_text='Training evening-mean threshold')
     if capacity is not None:
