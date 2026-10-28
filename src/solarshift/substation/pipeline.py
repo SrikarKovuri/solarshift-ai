@@ -165,7 +165,12 @@ def read_weather(path):
 
 def site_features(g, site, weather):
     guard_development(g)
-    days = pd.date_range('2021-04-01', '2024-04-30')
+    return _site_features(g, site, weather, '2024-04-30')
+
+
+def _site_features(g, site, weather, end):
+    """Shared feature construction; callers enforce their authorised split."""
+    days = pd.date_range('2021-04-01', end)
     m = g.pivot(index='date', columns='hh', values='mw').reindex(index=days, columns=range(48))
     training = m.loc['2021-05-01':'2023-04-30']
     level = float(training.stack().mean())

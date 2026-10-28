@@ -1,0 +1,67 @@
+{
+  "status": "held_out_test_complete",
+  "test_start": "2024-05-01",
+  "test_end": "2025-04-29",
+  "rows": 972371,
+  "sites": 63,
+  "evening_rows": 203619,
+  "complete_simulation_days": 17822,
+  "bootstrap": {
+    "improvement_pct": 54.21601717638806,
+    "ci95_pct": [
+      50.26019357523365,
+      57.26855110106653
+    ],
+    "blocks": 53,
+    "resamples": 500,
+    "seed": 2112,
+    "method": "paired calendar-week blocks across all sites; percentile interval"
+  },
+  "intervals": {
+    "raw_coverage": 0.7580137413502669,
+    "cqr_coverage": 0.7720988709305123,
+    "raw_width_mw": 2.7022017980938986,
+    "cqr_width_mw": 2.7429434274021847,
+    "pinball_q10_mw": 0.21727615393441413,
+    "pinball_q50_mw": 0.47355423298907884,
+    "pinball_q90_mw": 0.24041201610234617
+  },
+  "cqr_adjustment_mw": 0.020370814654143032,
+  "probability_brier": 0.046873382930405744,
+  "scenario": {
+    "mean_displaced_mwh": 0.047203203631757756,
+    "total_displaced_mwh": 841.2554951251867,
+    "capacity_limited_days": 47,
+    "max_energy_error_mwh": 1.1368683772161603e-13,
+    "evening_mean_reduction_pct": 0.0885608814843126,
+    "evening_max_reduction_pct": 0.08719598788007764,
+    "whole_day_max_reduction_pct": 0.08220415944407372,
+    "whole_day_absolute_flow_max_change_mw": -0.009995216124148552,
+    "increased_whole_day_max_days": 32,
+    "late_window_peak_increased_days": 2607,
+    "new_peak_outside_evening_days": 12
+  },
+  "sensitivity_combinations": 96,
+  "criteria": {
+    "mae_improvement_at_least_30pct": true,
+    "bootstrap_lower_above_15pct": true,
+    "cqr_coverage_70_to_90pct": true,
+    "warning_f1_above_weekly_and_seasonal": true
+  },
+  "archive_sha256": "47a1a3168bd5bf4ff7e064fd2d8fe9764142b8ced55af548f3c091f8430c8440",
+  "freeze_sha256": "44eade1de410cb3a85f243d11c59d45641890c4ac4cbec9e7dd7fe08191b36a3",
+  "weather_hashes": {
+    "upper_hunter": "45cf5bf96fc2302dd66001f30693becc2e7460c2d4b85504fc1f8dfef869178f",
+    "newcastle_lakes": "86fd504a8cce6ccdb0815f213d6cfd163ad1b571bb1d6d3432b4ff151d907e50",
+    "central_coast": "3e7039773ae77b45af6be9b799edd27f5122cad3d500a6356fdbd6e0a312c59c",
+    "syd_north": "569f60f7a40c079c1c606c3e76e090f178f58fca7fb20dbee62f7e0b384b2a86",
+    "syd_west": "b93dfd92272f91ecdcf3b7679e9676de47c74367c1299f2f092ef59c776a651b",
+    "lower_hunter": "419d82ef88cc225e0eb7423d6509643a2ca7bc844a5ca8863493c8e28f4a9282"
+  },
+  "limitations": [
+    "Historical availability assumptions remain unverified operationally.",
+    "Scenario effects are simulated with known measured headroom, not causal or bill-saving estimates.",
+    "Same sites across splits; not evidence of new-site generalisation.",
+    "No model, rule or calibration changed after held-out data access."
+  ]
+}

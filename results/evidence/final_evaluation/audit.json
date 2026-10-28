@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "rows": 972371,
+  "forecast_metrics_checked": 8,
+  "scenario_combinations": 96,
+  "frozen_hashes_unchanged": true,
+  "prediction_sha256": "6fa9732e7dd4aaa6899e82adeee1ce2c39d3fcbc8e9aaf7522883f8e8abac4c0",
+  "checks": [
+    "date boundary",
+    "unique keys",
+    "weather availability",
+    "DST exclusion",
+    "sorted quantiles",
+    "signed/magnitude agreement",
+    "all model/window errors",
+    "MAE improvement",
+    "CQR coverage",
+    "warning counts",
+    "energy conservation",
+    "zero response"
+  ]
+}

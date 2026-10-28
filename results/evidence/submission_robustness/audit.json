@@ -1,0 +1,17 @@
+{
+  "repeat_matches_original": true,
+  "reserved_test_opened": false,
+  "features_sha256": "a5fd76b0d52f7a7f2f66a3897bbe92a0c99b99a20b85035cc10d74414011760b",
+  "parameters": {
+    "n_estimators": 240,
+    "max_depth": 5,
+    "learning_rate": 0.05,
+    "min_child_weight": 50,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "tree_method": "hist",
+    "n_jobs": 4,
+    "random_state": 2112
+  },
+  "limitation": "Lockdown exclusion retains the original training-selected cohort, training scaling and anomaly flags. It isolates training-row sensitivity, not an independent earlier-year or mixed-cohort backtest."
+}
