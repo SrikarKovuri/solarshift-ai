@@ -2,17 +2,25 @@
 import json
 import os
 import html
+import sys
 from pathlib import Path
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
+sys.path.insert(0, str(Path(__file__).resolve().parent / "src"))
 from solarshift.substation.dashboard import catalog, curve_figure
 from solarshift.substation.theme import CSS, style_chart
 from solarshift.substation.response import Scenario
 from solarshift.substation.scenario_replay import replay_scenario
 
 ROOT = Path(__file__).resolve().parent
-GENERATED = Path(os.environ.get('SOLARSHIFT_RESULTS', ROOT / 'results/generated'))
+DEFAULT_RESULTS = ROOT / 'results/generated'
+if not (DEFAULT_RESULTS / 'substation_day4/validation_forecasts.parquet').exists():
+    DEFAULT_RESULTS = DEFAULT_RESULTS / 'marker_demo'
+GENERATED = Path(os.environ.get('SOLARSHIFT_RESULTS', DEFAULT_RESULTS))
+EVIDENCE = ROOT / 'results/evidence'
+FINAL_PATH = EVIDENCE / 'final_evaluation/summary.json'
+FINAL = json.loads(FINAL_PATH.read_text()) if FINAL_PATH.exists() else None
 D4, D5 = GENERATED / 'substation_day4', GENERATED / 'substation_day5'
 st.set_page_config(page_title='SolarShift AI | Closing the Peak', page_icon='◒', layout='wide')
 st.markdown(CSS, unsafe_allow_html=True)
@@ -29,10 +37,21 @@ try:
     cohort = pd.read_csv(D4/'cohort.csv').set_index('substation')
 except (OSError, ValueError, KeyError) as exc:
     st.error(f'Validation data unavailable: {exc}')
-    st.code('PYTHONPATH=src .venv/bin/python -m solarshift.substation.pipeline --help\n'
-            'PYTHONPATH=src .venv/bin/python -m solarshift.substation.day5')
-    st.caption('Follow docs/substation_forecasting.md to rebuild local artifacts. Raw datasets are not bundled with Git.')
+    st.write('First visit? Prepare the marker walkthrough from the official Ausgrid archive.')
+    st.code('python -m pip install -r requirements.txt\npython run.py')
+    st.caption('See docs/marker_guide.md. Setup downloads about 17 MB once; no training or private files are required.')
+    if st.button('Download official data and prepare walkthrough'):
+        from scripts.prepare_demo import prepare
+        try:
+            with st.spinner('Downloading and verifying the official archive…'):
+                prepare(ROOT / 'results/generated/marker_demo')
+            st.rerun()
+        except Exception as setup_error:
+            st.error(f'Setup failed: {setup_error}. Use the manual archive option in the marker guide.')
     st.stop()
+
+if (GENERATED/'demo_manifest.json').exists():
+    st.info('Marker walkthrough: 42 historical site-days across 3 substations. Evidence tables describe the full 63-site study. These are saved model forecasts; changing scenario controls does not retrain the model.')
 
 with st.container(border=True):
     st.subheader('Choose a location and date')
@@ -41,8 +60,8 @@ with st.container(border=True):
         site = st.selectbox('Substation', days.site.unique(), key='site')
     dates = days.loc[days.site.eq(site), 'date'].tolist()
     with date_column:
-        date = st.selectbox('Validation date', dates, key=f'date_{site}')
-    st.caption(f'{len(dates)} complete days available · November 2023–April 2024 · Historical data')
+        date = st.selectbox('Validation date', dates, key=f'date_{site}', index=dates.index('2023-11-12') if '2023-11-12' in dates else 0)
+    st.caption(f'{len(dates)} complete days available · {pd.Timestamp(min(dates)).strftime("%d %b %Y")}–{pd.Timestamp(max(dates)).strftime("%d %b %Y")} · Historical data')
 
 st.markdown(f'<div class="selection-heading"><h2>{html.escape(site.replace("_", "/"))}</h2>'
             f'<p>{pd.Timestamp(date).strftime("%A, %d %B %Y")} · Evening peak: 4–9 pm</p></div>', unsafe_allow_html=True)
@@ -124,10 +143,30 @@ with scenario:
     st.download_button('Download this replay (CSV)', f.to_csv(index=False), f'{site}_{date}_scenario.csv', 'text/csv')
     st.download_button('Download scenario assumptions (JSON)', json.dumps(dict(site=site,date=date,scenario=Scenario(residential,flexible,response,exempt,solar,battery,factor,midday).__dict__,capacity_mw=cap,metrics=metrics),indent=2), 'scenario_assumptions.json', 'application/json')
 with evidence:
+    if FINAL:
+        st.subheader('Final held-out evaluation')
+        st.write('Frozen models evaluated once on 1 May 2024–29 April 2025, following team approval confirmed by Srikar. These results are separate from the validation replay.')
+        a,b,c = st.columns(3)
+        a.metric('Final evening MAE improvement', f"{FINAL['bootstrap']['improvement_pct']:.1f}%")
+        b.metric('Final CQR coverage', f"{FINAL['intervals']['cqr_coverage']:.1%}")
+        c.metric('Test intervals', f"{FINAL['rows']:,}")
+        low,high = FINAL['bootstrap']['ci95_pct']
+        st.caption(f'Weekly persistence comparison · 95% week-block interval: {low:.1f}–{high:.1f}%. Coverage remains below the nominal 80%.')
+        with st.expander('Final metrics, warning performance and audit'):
+            for name in ['metrics.csv','warning_metrics.csv','slices.csv']:
+                st.dataframe(pd.read_csv(EVIDENCE/'final_evaluation'/name), hide_index=True)
+            st.json(FINAL)
+        carbon_path = EVIDENCE/'submission_robustness/carbon.json'
+        if carbon_path.exists():
+            carbon = json.loads(carbon_path.read_text())
+            with st.expander('Training repeat, robustness and carbon estimate'):
+                st.dataframe(pd.read_csv(carbon_path.parent/'metrics.csv'), hide_index=True)
+                st.json(carbon)
+                st.caption('This measures an instrumented training repeat and sensitivity run, not the original historical run. Fixed power assumptions are documented; it is not a wall-meter measurement.')
     st.subheader('Validation evidence')
     st.write('Training: May 2021–April 2023. Forecast validation: May 2023–April 2024. '
              'Probability fitting: May–October 2023; warning evaluation: November 2023–April 2024. '
-             'Final-test evaluation and method sign-off remain outstanding.')
+             'See the separate final-evaluation section for held-out results.')
     for title, path in [('Forecast comparison — errors in MW; nMAE in percent', D4/'metrics.csv'),
                         ('Warning comparison — later validation', D5/'warning_metrics.csv'),
                         ('Probability reliability — later validation', D5/'reliability.csv')]:
@@ -175,9 +214,8 @@ with evidence:
         st.write('Missing history, gaps, ambiguous DST dates and quality flags exclude rows; scenarios require complete 48-slot days. '
                  'Published signed flow is preserved; the model predicts its magnitude. Genuine temperature-only forecasts replace synthetic future-error donors. '
                  'Weather coverage limits the evaluation period. Forecasts and policy settings are research assumptions, not operational advice.')
-        st.write('Substation training carbon has not yet been instrumented. The archived household carbon estimate does not apply. '
-                 'Chronological CQR and weekly bootstrap diagnostics are in the validation evidence above. Frozen final-test evaluation remains outstanding.')
-        st.write('Theo supplied source data/code and scenario concepts. Codex adapted the local pipeline and dashboard at Srikar’s request. Human team review remains pending.')
+        st.write('Chronological CQR, weekly bootstrap and final held-out diagnostics are reported separately. The instrumented substation training repeat has its own carbon estimate; the archived household estimate is not reused.')
+        st.write('Theo supplied source data/code and scenario concepts. Codex adapted the local pipeline and dashboard at Srikar’s request. Team freeze approval was confirmed by Srikar before final testing.')
         st.json({'weather_provenance':f.weather_provenance.iloc[0], 'quality_flags':f.quality_flags.unique().tolist(), 'anomaly_day':bool(f.anomaly.any())})
 
-st.markdown('<footer class="apple-footer" id="about"><div><strong>SolarShift AI</strong><p>Closing the Peak explores substation forecasting and voluntary demand response. Built for ENG2112 using historical Ausgrid data.</p></div><div><strong>Explore</strong><a href="#workspace">Research workspace</a><a href="#approach">How it works</a><a href="#overview">Back to overview</a></div><div><strong>Research notice</strong><p>Validation prototype. Simulated effects are not measured savings or operational advice. Reserved-test evaluation remains pending.</p></div></footer>', unsafe_allow_html=True)
+st.markdown('<footer class="apple-footer" id="about"><div><strong>SolarShift AI</strong><p>Closing the Peak explores substation forecasting and voluntary demand response. Built for ENG2112 using historical Ausgrid data.</p></div><div><strong>Explore</strong><a href="#workspace">Research workspace</a><a href="#approach">How it works</a><a href="#overview">Back to overview</a></div><div><strong>Research notice</strong><p>Validation prototype. Simulated effects are not measured savings or operational advice. Final held-out results are available in the Evidence tab.</p></div></footer>', unsafe_allow_html=True)

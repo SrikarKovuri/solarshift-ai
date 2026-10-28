@@ -289,3 +289,25 @@ working forecasting, response and evidence controls. Navigation and appearance
 were checked in the browser; all four dashboard integration tests passed.
 The user reviewed the preview and explicitly requested commit and push.
 See apple_ui_preview.md for design tokens and motion implementation.
+
+## Submission completion — 28 October 2026
+
+Srikar confirmed team approval of the current method freeze and final test in the
+project chat. Recorded that confirmation and artifact/code hashes before opening
+FY2025. Retained existing training-only models, cohort, probability calibration,
+CQR widening and scenario rules; documented deviations from the reference proposal.
+Scored 972,371 held-out intervals once. Evening MAE improvement is 54.216% with a
+50.260–57.269% week-block interval; CQR coverage is 77.210%. All 96 scenario cases
+conserved energy. Independent saved-output audit passed. No test-driven retuning.
+
+Repeated original quantile training and verified it reproduces validation predictions;
+ran a lockdown-excluded training sensitivity. CodeCarbon estimated 0.00060355 kg
+CO2e for the six fits and validation checks, under fixed power assumptions. This
+is not retrospective measurement of the original training or a wall-meter result.
+
+Added genuine marker walkthrough (42 days, three sites), official-source download
+with SHA-256 verification, cross-platform launcher, Codespaces and CI configuration,
+source notices, public frozen models and a rewritten marker-first README. Real
+measurements remain outside Git; model outputs and aggregate evidence are bundled.
+The final full local suite passed 106 tests. Clean-copy verification is recorded separately
+in submission_checks.json. The teammates' report is outside this implementation task.

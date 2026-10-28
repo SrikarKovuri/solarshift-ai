@@ -1,3 +1,9 @@
+# Historical validation handover
+
+Superseded for submission status by [final evaluation](final_evaluation.md) and
+[marker guide](marker_guide.md). Validation numbers below are unchanged; the later
+final test, carbon repeat and Apple-inspired UI are now complete.
+
 # Validation handover — 28 October 2026
 
 The prototype now uses the ENG2112 Study Atlas palette, typography, sidebar treatment,

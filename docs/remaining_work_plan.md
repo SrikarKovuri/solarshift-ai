@@ -1,3 +1,22 @@
+# Submission status — 28 October 2026
+
+The runnable research prototype is complete: training-selected substation models,
+validation diagnostics, approved frozen final-year evaluation, grouped explanations,
+96-case scenario sweeps, lockdown training sensitivity, instrumented repeat-training
+carbon estimate, marker launcher and source notices. The marker walkthrough needs
+only public data and bundled model outputs. See [marker guide](marker_guide.md).
+
+The team owns the report/presentation and Canvas submission. Public hosting is optional
+and separate from the required repository link. Earlier-year retraining, mixed-site
+transfer, SHAP, LSTM and live operation are outside the delivered frozen experiment;
+no claims about those capabilities are made.
+
+The plan below is retained as historical context. Statements about pending final
+testing, carbon or dashboard work have been superseded by the executed evidence in
+[final evaluation](final_evaluation.md).
+
+---
+
 # Remaining prototype work
 
 Updated 27 October 2026 after reviewing Theo's 7 October team document,

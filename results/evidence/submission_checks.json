@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "public_repository_verified": true,
+  "official_download_verified": true,
+  "clean_environment": {
+    "python": "3.12",
+    "installation": "requirements.txt plus editable project",
+    "tests_passed": 103,
+    "tests_skipped": 2,
+    "skip_reason": "Full generated research artifacts intentionally absent; marker demo test passed",
+    "pip_check": "No broken requirements found"
+  },
+  "clean_copy": "Only Git-tracked and intended new files; no .venv, raw sources, generated research tables or model cache copied",
+  "followup": "One additional duplicate-final-run guard test passed in the 11-test targeted check after clean-copy verification.",
+  "browser": "Clean-copy marker walkthrough and final-test evidence inspected at localhost:8502",
+  "hosting": "Not deployed; README documents local and Codespaces launch paths",
+  "final_local_suite": {
+    "passed": 106,
+    "skipped": 0
+  }
+}

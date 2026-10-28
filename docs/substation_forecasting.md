@@ -1,3 +1,10 @@
+# Historical integration milestone
+
+Current submission status: the dashboard, final evaluation and instrumented training
+repeat are complete. See [final evaluation](final_evaluation.md) and
+[research reproduction](reproduction.md). The Day 4 record below describes the
+validation-only stage at that time.
+
 # Substation data and forecast integration
 
 Implemented 24 October 2026. This is historical validation replay, with no reserved

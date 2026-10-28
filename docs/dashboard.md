@@ -1,3 +1,10 @@
+# Current submission status
+
+For the approved Apple-inspired UI and marker setup, use [marker guide](marker_guide.md).
+The final held-out evaluation and carbon-tracked training repeat are complete; see
+[final evaluation](final_evaluation.md). The sections below retain the earlier dashboard
+milestone and are historical where they describe outstanding work.
+
 # Interactive validation dashboard
 
 Implemented 27 October 2026 (the work request began on 26 October, before midnight).
