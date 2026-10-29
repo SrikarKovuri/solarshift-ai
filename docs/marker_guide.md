@@ -49,7 +49,11 @@ The setup never extracts arbitrary archive paths or executes downloaded files.
 
 - **Port in use:** stop the other Streamlit process, or prepare first and run
   `python -m streamlit run streamlit_app.py --server.port 8502`.
-- **XGBoost/OpenMP error:** install libomp on macOS or libgomp1 on Debian/Ubuntu.
+- **XGBoost/OpenMP error during app startup:** an older checkout unnecessarily
+  loaded the training library. Stop with Ctrl+C, run `git pull --ff-only`, and
+  restart with `python run.py`. The current walkthrough does not load XGBoost.
+  Optional training/model reload checks still require OpenMP: `brew install libomp`
+  on macOS with Homebrew, or `sudo apt-get install libgomp1` on Debian/Ubuntu.
 - **Wrong Python:** use a fresh Python 3.12 virtual environment.
 - **Missing data:** run `python run.py --prepare-only`; the app also offers an
   explicit setup button. A bare `streamlit run` cannot access another person's files.

@@ -24,8 +24,14 @@ python -m pip install -r requirements.txt
 python run.py
 ```
 
-On macOS, XGBoost also needs the OpenMP runtime: `brew install libomp`.
-On Debian/Ubuntu, install `libgomp1` if it is not already present.
+The walkthrough replays saved forecasts and does not load XGBoost or require its
+native OpenMP library. For optional model training or model reload checks, install
+OpenMP **before** running those commands: `brew install libomp` on macOS
+(requires Homebrew), or `sudo apt-get install libgomp1` on Debian/Ubuntu.
+
+If an older checkout reports `Library not loaded: @rpath/libomp.dylib`, stop the
+app with Ctrl+C, run `git pull --ff-only`, then run `python run.py` again.
+You do not need to recreate the virtual environment or download the data again.
 
 **Windows PowerShell**
 
