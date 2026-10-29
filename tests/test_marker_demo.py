@@ -41,3 +41,31 @@ def test_marker_replay_matches_full_saved_predictions_and_ui(monkeypatch):
     assert len(app.selectbox(key='site').options)==3
     assert 'Marker walkthrough' in app.info[0].value
     assert float(next(m.value for m in app.metric if m.label=='Displaced energy').split()[0])>0
+
+
+def test_dashboard_starts_without_native_xgboost():
+    """A marker can open the saved-forecast app without macOS libomp installed."""
+    import subprocess
+    import sys
+    import textwrap
+
+    code = textwrap.dedent('''
+        import builtins
+        import sys
+        from pathlib import Path
+        original_import = builtins.__import__
+        def without_xgboost(name, *args, **kwargs):
+            if name == 'xgboost' or name.startswith('xgboost.'):
+                raise ImportError('Simulated missing native OpenMP runtime')
+            return original_import(name, *args, **kwargs)
+        builtins.__import__ = without_xgboost
+        sys.path.insert(0, str(Path('src').resolve()))
+        from solarshift.substation.scenario_replay import replay_scenario
+        from streamlit.testing.v1 import AppTest
+        app = AppTest.from_file('streamlit_app.py', default_timeout=30).run()
+        assert not app.exception, app.exception
+        assert 'xgboost' not in sys.modules
+    ''')
+    result = subprocess.run([sys.executable, '-c', code], cwd=ROOT,
+                            text=True, capture_output=True, timeout=60)
+    assert result.returncode == 0, result.stdout + result.stderr

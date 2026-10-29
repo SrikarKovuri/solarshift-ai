@@ -17,7 +17,6 @@ import pandas as pd
 from sklearn.linear_model import Ridge
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
-from xgboost import XGBRegressor
 
 from . import ausgrid, calendar_nsw, selection
 
@@ -228,6 +227,9 @@ def metrics(actual, pred, level):
 
 
 def run(source, output, reuse_clean=False):
+    # Replay uses saved predictions and must not load the native training runtime.
+    from xgboost import XGBRegressor
+
     started = time.time()
     output.mkdir(parents=True, exist_ok=True)
     used = [source / 'data/raw/ausgrid' / f'ausgrid_zss_FY{y}.zip' for y in range(2021, 2025)]
